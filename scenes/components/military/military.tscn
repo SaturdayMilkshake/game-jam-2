@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvfdoie2gtv8b"]
+
+[ext_resource type="Script" path="res://scenes/components/military/military.gd" id="1_0d4pt"]
+
+[node name="Military" type="Node"]
+script = ExtResource("1_0d4pt")

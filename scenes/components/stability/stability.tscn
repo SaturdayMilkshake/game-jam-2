@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0nswlnnobtxf"]
+
+[ext_resource type="Script" path="res://scenes/components/stability/stability.gd" id="1_37fgi"]
+
+[node name="Stability" type="Node"]
+script = ExtResource("1_37fgi")

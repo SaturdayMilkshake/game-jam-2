@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfbgcmcj60ckw"]
+
+[ext_resource type="Script" path="res://scenes/components/economy/economy.gd" id="1_1vehi"]
+
+[node name="Economy" type="Node"]
+script = ExtResource("1_1vehi")
