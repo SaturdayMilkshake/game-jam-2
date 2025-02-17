@@ -5,11 +5,11 @@
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_ve2lx")
 
-[node name="TheMediator" type="Label" parent="."]
+[node name="GameTitle" type="Label" parent="."]
 offset_right = 1152.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 48
-text = "The Mediator"
+text = "Game Jam 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -19,3 +19,19 @@ offset_top = 128.0
 offset_right = 640.0
 offset_bottom = 192.0
 text = "Play"
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 192.0
+offset_right = 640.0
+offset_bottom = 256.0
+text = "Settings"
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 320.0
+text = "Credits"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

@@ -1,7 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbvkf5dobplar"]
+[gd_scene load_steps=6 format=3 uid="uid://cbvkf5dobplar"]
 
+[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_il811"]
 [ext_resource type="PackedScene" uid="uid://cdycehgp78nr0" path="res://scenes/country/country.tscn" id="1_wohfb"]
+[ext_resource type="PackedScene" uid="uid://da367dath0qla" path="res://scenes/game_manager/game_manager.tscn" id="3_5iws7"]
+[ext_resource type="PackedScene" uid="uid://wa8c6q8bsggs" path="res://scenes/world/ui/event_info/event_info.tscn" id="3_21bx7"]
+[ext_resource type="PackedScene" uid="uid://bs357xfrieidy" path="res://scenes/world/ui/country_info/country_info.tscn" id="3_txpeh"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_il811")
+
+[node name="Navbar" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 64.0
+color = Color(0.160629, 0.160629, 0.160629, 1)
+
+[node name="BottomBar" type="ColorRect" parent="."]
+offset_top = 576.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.157753, 0.157753, 0.157753, 1)
+
+[node name="LeftPanel" type="ColorRect" parent="."]
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 576.0
+color = Color(0.229593, 0.229593, 0.229593, 1)
+
+[node name="CountryInfo" parent="LeftPanel" instance=ExtResource("3_txpeh")]
+visible = false
+
+[node name="EventInfo" parent="LeftPanel" instance=ExtResource("3_21bx7")]
+
+[node name="Date" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 248.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 24
+text = "Turn 1"
+vertical_alignment = 1
+
+[node name="GameManager" parent="." instance=ExtResource("3_5iws7")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 576.0
+color = Color(0.180392, 0.12549, 0.407843, 1)
 
 [node name="Country" parent="." instance=ExtResource("1_wohfb")]
+position = Vector2(384, 64)
+country_name = "Carateria"
+population = 100
+flag = "res://assets/flags/carateria.svg"
+starting_economy = 3
+starting_stability = 3
+starting_military = 7
+
+[node name="Country2" parent="." instance=ExtResource("1_wohfb")]
+position = Vector2(384, 128)
+country_name = "Satura"
+population = 75
+flag = "res://assets/flags/satura.svg"
+starting_economy = 7
+starting_stability = 3
+starting_military = 2
+
+[node name="BackToTitle" type="Button" parent="."]
+offset_left = 1096.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 56.0
+text = "T"
+
+[connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]

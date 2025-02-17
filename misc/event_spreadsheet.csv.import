@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b45k54hq2fndg"
+
+[deps]
+
+files=["res://misc/event_spreadsheet.Description.translation", "res://misc/event_spreadsheet.Country 1.translation", "res://misc/event_spreadsheet.Country 2.translation", "res://misc/event_spreadsheet.Option 1 Name.translation", "res://misc/event_spreadsheet.Option 2 Name.translation", "res://misc/event_spreadsheet.Option 1 Effect 1.translation", "res://misc/event_spreadsheet.Option 1 Modifier 1.translation", "res://misc/event_spreadsheet.Option 1 Effect 2.translation", "res://misc/event_spreadsheet.Option 1 Modifier 2.translation", "res://misc/event_spreadsheet.Option 2 Effect 1.translation", "res://misc/event_spreadsheet.Option 2 Modifier 1.translation", "res://misc/event_spreadsheet.Option 2 Effect 2.translation", "res://misc/event_spreadsheet.Option 2 Modifier 2.translation"]
+
+source_file="res://misc/event_spreadsheet.csv"
+dest_files=["res://misc/event_spreadsheet.Description.translation", "res://misc/event_spreadsheet.Country 1.translation", "res://misc/event_spreadsheet.Country 2.translation", "res://misc/event_spreadsheet.Option 1 Name.translation", "res://misc/event_spreadsheet.Option 2 Name.translation", "res://misc/event_spreadsheet.Option 1 Effect 1.translation", "res://misc/event_spreadsheet.Option 1 Modifier 1.translation", "res://misc/event_spreadsheet.Option 1 Effect 2.translation", "res://misc/event_spreadsheet.Option 1 Modifier 2.translation", "res://misc/event_spreadsheet.Option 2 Effect 1.translation", "res://misc/event_spreadsheet.Option 2 Modifier 1.translation", "res://misc/event_spreadsheet.Option 2 Effect 2.translation", "res://misc/event_spreadsheet.Option 2 Modifier 2.translation"]
+
+[params]
+
+compress=true
+delimiter=0

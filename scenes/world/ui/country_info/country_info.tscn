@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs357xfrieidy"]
+
+[ext_resource type="Script" path="res://scenes/world/ui/country_info/country_info.gd" id="1_rn7no"]
+[ext_resource type="Texture2D" uid="uid://ccx85m0m64euw" path="res://assets/flags/satura.svg" id="2_pgu2d"]
+
+[node name="CountryInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 384.0
+offset_bottom = 256.0
+script = ExtResource("1_rn7no")
+
+[node name="Flag" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 176.0
+offset_bottom = 113.398
+texture = ExtResource("2_pgu2d")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="CountryName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 12.0
+offset_right = 376.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 24
+text = "Satura"
+vertical_alignment = 1
+
+[node name="Population" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 48.0
+offset_right = 376.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 18
+text = "Pop.: 50"
+vertical_alignment = 1
+
+[node name="Economy" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 144.0
+offset_right = 176.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 24
+text = "Economy: 5"
+vertical_alignment = 1
+
+[node name="Stability" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 208.0
+offset_right = 176.0
+offset_bottom = 242.0
+theme_override_font_sizes/font_size = 24
+text = "Stability: 5"
+vertical_alignment = 1
+
+[node name="Military" type="Label" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 144.0
+offset_right = 352.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 24
+text = "Military: 5"
+vertical_alignment = 1
+
+[node name="Cooperation" type="Label" parent="."]
+offset_left = 192.0
+offset_top = 208.0
+offset_right = 368.0
+offset_bottom = 242.0
+theme_override_font_sizes/font_size = 24
+text = "Cooperation: 5"
+vertical_alignment = 1
