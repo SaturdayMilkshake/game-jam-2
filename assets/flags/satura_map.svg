@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="768"
+   height="512"
+   viewBox="0 0 203.2 135.46667"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="satura_map.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.88"
+     inkscape:cx="352.65957"
+     inkscape:cy="221.2766"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer5">
+    <inkscape:grid
+       id="grid10"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="2.1166668"
+       spacingy="2.1166668"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="4"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="world" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="country1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="country2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="country3">
+    <path
+       style="opacity:0.75;fill:#ff0000;stroke-width:0.264583"
+       d="m 96.471497,15.148646 -1.526873,4.506719 2.290686,3.331207 3.0052,-1.045515 2.3662,12.476287 9.03154,2.339323 -7.13444,5.54003 3.21667,0.992878 -4.35892,3.656843 4.62286,11.563066 -2.09435,1.668081 -1.5625,-4.034274 -3.01151,1.075542 0.40034,2.061457 -2.551428,-0.340588 -0.909263,2.313404 2.686871,1.984803 -2.528508,2.370153 2.098298,1.611332 -2.962691,4.581942 -8.980446,-2.108856 -0.987122,2.0851 -3.106536,-0.709987 -1.595497,-3.449655 -2.498161,0.220388 -0.808965,3.233225 -10.693394,-0.302208 -5.900307,2.953451 -6.490368,-5.674133 -2.898581,-8.093263 -3.12946,-0.126823 -0.76789,-2.876121 2.329017,-0.31229 0.374742,-2.741654 -2.645964,-7.476007 11.66468,-1.62849 0.0084,-3.563921 4.642125,-1.246323 0.77397,-11.614966 2.344912,-1.013739 0.581073,-7.491342 5.792083,-0.214896 2.343246,-2.647631 7.363786,-0.963292 4.715626,-5.496767 6.244652,1.422153 z"
+       id="path19"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="country5" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="country6" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="country7" />
+</svg>

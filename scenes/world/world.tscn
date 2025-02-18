@@ -39,6 +39,7 @@ offset_bottom = 48.0
 theme_override_font_sizes/font_size = 24
 text = "Turn 1"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("3_5iws7")]
 
@@ -49,29 +50,51 @@ offset_right = 1152.0
 offset_bottom = 576.0
 color = Color(0.180392, 0.12549, 0.407843, 1)
 
-[node name="Country" parent="." instance=ExtResource("1_wohfb")]
-position = Vector2(384, 64)
-country_name = "Carateria"
-population = 100
-flag = "res://assets/flags/carateria.svg"
-starting_economy = 3
-starting_stability = 3
-starting_military = 7
-
-[node name="Country2" parent="." instance=ExtResource("1_wohfb")]
-position = Vector2(384, 128)
-country_name = "Satura"
-population = 75
-flag = "res://assets/flags/satura.svg"
-starting_economy = 7
-starting_stability = 3
-starting_military = 2
-
 [node name="BackToTitle" type="Button" parent="."]
 offset_left = 1096.0
 offset_top = 8.0
 offset_right = 1144.0
 offset_bottom = 56.0
 text = "T"
+
+[node name="Countries" type="Node2D" parent="."]
+position = Vector2(384, 64)
+metadata/_edit_group_ = true
+
+[node name="Country" parent="Countries" instance=ExtResource("1_wohfb")]
+country_name = "Satura"
+flag = "res://assets/flags/satura.svg"
+map = "res://assets/flags/satura_map.svg"
+mask = "res://assets/flags/satura_mask.svg"
+
+[node name="Country2" parent="Countries" instance=ExtResource("1_wohfb")]
+country_name = "Carateria"
+flag = "res://assets/flags/carateria.svg"
+map = "res://assets/flags/carateria_map.svg"
+mask = "res://assets/flags/carateria_mask.svg"
+
+[node name="Country3" parent="Countries" instance=ExtResource("1_wohfb")]
+country_name = "Boerland"
+flag = "res://assets/flags/bingus1.svg"
+map = "res://assets/flags/green_map.svg"
+mask = "res://assets/flags/green_mask.svg"
+
+[node name="Country4" parent="Countries" instance=ExtResource("1_wohfb")]
+country_name = "Arcasia"
+flag = "res://assets/flags/bossman2.svg"
+map = "res://assets/flags/orange_map.svg"
+mask = "res://assets/flags/orange_mask.svg"
+
+[node name="Country5" parent="Countries" instance=ExtResource("1_wohfb")]
+country_name = "Contana"
+flag = "res://assets/flags/bossman1.svg"
+map = "res://assets/flags/gray_map.svg"
+mask = "res://assets/flags/gray_mask.svg"
+
+[node name="Country6" parent="Countries" instance=ExtResource("1_wohfb")]
+country_name = "Southern Isles"
+flag = "res://assets/flags/bingus1(1).svg"
+map = "res://assets/flags/yellow_map.svg"
+mask = "res://assets/flags/yellow_mask.svg"
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]

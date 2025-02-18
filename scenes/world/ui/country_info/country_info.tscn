@@ -71,6 +71,7 @@ text = "Military: 5"
 vertical_alignment = 1
 
 [node name="Cooperation" type="Label" parent="."]
+layout_mode = 0
 offset_left = 192.0
 offset_top = 208.0
 offset_right = 368.0

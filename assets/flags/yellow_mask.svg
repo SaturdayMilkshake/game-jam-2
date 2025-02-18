@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="768"
+   height="512"
+   viewBox="0 0 203.2 135.46667"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="yellow_mask.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="2.16"
+     inkscape:cx="323.61111"
+     inkscape:cy="185.18519"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer4">
+    <inkscape:grid
+       id="grid10"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="2.1166668"
+       spacingy="2.1166668"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="4"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="world" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="country1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="country2">
+    <path
+       style="opacity:1;fill:#ffffff;stroke-width:0.264583;fill-opacity:1"
+       d="m 100.93167,89.048478 -2.045299,3.289743 -0.102596,2.578647 1.541655,1.636581 0.17435,3.126911 -2.760697,1.70083 -0.510413,-3.78549 -0.499385,-1.822481 -3.192116,-0.588957 -5.780746,6.234008 -2.324811,-1.05827 0.08079,-2.938885 4.168636,-0.294812 1.228652,-1.51861 0.841838,-2.758157 5.394398,-3.102115 1.317621,-2.52327 -1.897854,-1.184976 -2.908392,0.562811 0.320228,-3.887956 -6.529959,-5.724381 -12.240594,1.39764 -1.573874,-2.264305 -1.056927,3.48031 -3.716996,0.594495 -2.393869,2.635418 -1.667418,4.924695 -7.007437,-0.585835 -1.628738,3.353882 -0.643858,4.954984 1.925749,2.927108 1.188446,6.812159 2.271316,1.3635 -0.605745,3.16507 4.656362,-0.0741 8.014319,-2.85014 1.890128,3.07058 -3.273852,4.96051 6.31947,10.17956 2.311177,-0.51173 0.987941,3.55755 -2.607987,1.18332 2.09932,3.51599 c 0,0 4.124138,-0.56658 4.030595,-0.3795 -0.09354,0.18709 5.906609,-9.05969 5.906609,-9.05969 l 2.15152,-6.99065 5.780508,-1.19131 -0.324642,-3.08124 -2.699237,-0.81161 -0.269385,-2.8452 9.259429,0.16621 3.43362,-4.20844 -0.0765,-2.10199 -3.62416,-0.4412 -0.59059,-1.68341 4.22574,-3.316955 1.02348,-4.636817 -0.21188,-2.629948 z"
+       id="path18"
+       sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccsccccccccccccccc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="country3" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="country5" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="country6" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="country7" />
+</svg>

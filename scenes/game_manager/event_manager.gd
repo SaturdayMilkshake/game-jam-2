@@ -15,4 +15,4 @@ func initialize_events() -> void:
 	event_file.close()
 
 func generate_new_event() -> void:
-	print(events.size())
+	pass

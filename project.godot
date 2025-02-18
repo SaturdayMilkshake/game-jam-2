@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SignalHandler="*res://scripts/signal_handler.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

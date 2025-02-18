@@ -39,6 +39,7 @@ theme_override_font_sizes/font_size = 24
 text = "Approve"
 
 [node name="Option2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 456.0
 offset_right = 368.0
