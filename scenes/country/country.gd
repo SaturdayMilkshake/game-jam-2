@@ -31,9 +31,20 @@ func _ready() -> void:
 func new_turn(_turn: int) -> void:
 	pass
 	
-func modify_country_value(country: String, _attribute: String, _modifier: int) -> void:
+func modify_country_value(country: String, attribute: String, modifier: int) -> void:
 	if country == country_name:
-		pass
+		match attribute:
+			"Economy":
+				economy.economy += modifier
+			"Stability":
+				stability.stability += modifier
+			"Military":
+				military.military += modifier
+			"Cooperation":
+				cooperation.cooperation += modifier
+			"Population":
+				population += modifier
+		SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
 
 func _on_map_pressed() -> void:
 	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)

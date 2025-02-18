@@ -48,7 +48,7 @@ offset_left = 384.0
 offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 576.0
-color = Color(0.180392, 0.12549, 0.407843, 1)
+color = Color(0.270942, 0.649567, 0.653802, 1)
 
 [node name="BackToTitle" type="Button" parent="."]
 offset_left = 1096.0
