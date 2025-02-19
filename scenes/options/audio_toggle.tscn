@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://s7thsiwi1uuy"]
+
+[ext_resource type="Script" path="res://scenes/options/audio_toggle.gd" id="1_vrnqu"]
+
+[node name="AudioToggle" type="Button"]
+offset_right = 48.0
+offset_bottom = 48.0
+text = "M"
+script = ExtResource("1_vrnqu")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

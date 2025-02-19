@@ -18,9 +18,18 @@ script = ExtResource("1_e8aaw")
 [node name="Cooperation" parent="." instance=ExtResource("5_hfe5j")]
 
 [node name="Map" type="TextureButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.643137)
 offset_right = 64.0
 offset_bottom = 64.0
 stretch_mode = 4
+
+[node name="Status" type="RichTextLabel" parent="."]
+offset_right = 192.0
+offset_bottom = 64.0
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 
 [connection signal="mouse_entered" from="Map" to="." method="_on_map_mouse_entered"]
 [connection signal="mouse_exited" from="Map" to="." method="_on_map_mouse_exited"]

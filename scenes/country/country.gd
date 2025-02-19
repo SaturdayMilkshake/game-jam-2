@@ -29,22 +29,35 @@ func _ready() -> void:
 	military.military = starting_military
 
 func new_turn(_turn: int) -> void:
-	pass
+	population += (economy.economy - 5) + (stability.stability - 5)
 	
 func modify_country_value(country: String, attribute: String, modifier: int) -> void:
 	if country == country_name:
+		if modifier > 0:
+			$Status.text += "[center][color=darkgreen]+"
+		elif modifier < 0:
+			$Status.text += "[center][color=firebrick]-"
+
 		match attribute:
 			"Economy":
 				economy.economy += modifier
+				$Status.text += "Economy"
 			"Stability":
 				stability.stability += modifier
+				$Status.text += "Stability"
 			"Military":
 				military.military += modifier
+				$Status.text += "Military"
 			"Cooperation":
 				cooperation.cooperation += modifier
+				$Status.text += "Cooperation"
 			"Population":
 				population += modifier
-		SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
+				$Status.text += "Population"
+		$Status.text += "\n"
+		$Status.text.strip_edges()
+		move_status_label()
+	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
 
 func _on_map_pressed() -> void:
 	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
@@ -54,3 +67,14 @@ func _on_map_mouse_entered() -> void:
 
 func _on_map_mouse_exited() -> void:
 	self.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+func move_status_label() -> void:
+	var tween: Tween = create_tween()
+	$Status.visible = true
+	tween.tween_property($Status, "position", $Status.position + Vector2(0, -25), 1).set_trans(Tween.TRANS_CIRC)
+	tween.tween_callback(reset_status_label_position)
+
+func reset_status_label_position() -> void:
+	$Status.visible = false
+	$Status.position -= Vector2(0, -25)
+	$Status.text = ""

@@ -12,3 +12,7 @@ func country_selected(country: String, flag: String, population: int, economy: i
 	$Stability.text = "Stability: " + str(stability)
 	$Military.text = "Military: " + str(military)
 	$Cooperation.text = "Cooperation: " + str(cooperation)
+
+func _on_new_event_pressed() -> void:
+	self.visible = false
+	SignalHandler.emit_signal("new_event_requested")

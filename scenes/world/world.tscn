@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbvkf5dobplar"]
+[gd_scene load_steps=8 format=3 uid="uid://cbvkf5dobplar"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_il811"]
 [ext_resource type="PackedScene" uid="uid://cdycehgp78nr0" path="res://scenes/country/country.tscn" id="1_wohfb"]
 [ext_resource type="PackedScene" uid="uid://da367dath0qla" path="res://scenes/game_manager/game_manager.tscn" id="3_5iws7"]
 [ext_resource type="PackedScene" uid="uid://wa8c6q8bsggs" path="res://scenes/world/ui/event_info/event_info.tscn" id="3_21bx7"]
 [ext_resource type="PackedScene" uid="uid://bs357xfrieidy" path="res://scenes/world/ui/country_info/country_info.tscn" id="3_txpeh"]
+[ext_resource type="PackedScene" uid="uid://s7thsiwi1uuy" path="res://scenes/options/audio_toggle.tscn" id="6_3geyv"]
+[ext_resource type="Texture2D" uid="uid://c7tlb7n1slofl" path="res://assets/flags/map_nobg.svg" id="6_mxnvk"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_il811")
@@ -43,12 +45,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("3_5iws7")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="WorldBackground" type="ColorRect" parent="."]
 offset_left = 384.0
 offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 576.0
 color = Color(0.270942, 0.649567, 0.653802, 1)
+metadata/_edit_lock_ = true
 
 [node name="BackToTitle" type="Button" parent="."]
 offset_left = 1096.0
@@ -56,10 +59,26 @@ offset_top = 8.0
 offset_right = 1144.0
 offset_bottom = 56.0
 text = "T"
+metadata/_edit_lock_ = true
+
+[node name="AudioToggle" parent="." instance=ExtResource("6_3geyv")]
+offset_left = 1032.0
+offset_top = 8.0
+offset_right = 1080.0
+offset_bottom = 56.0
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 576.0
+texture = ExtResource("6_mxnvk")
+metadata/_edit_lock_ = true
 
 [node name="Countries" type="Node2D" parent="."]
 position = Vector2(384, 64)
-metadata/_edit_group_ = true
 
 [node name="Country" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Satura"
@@ -67,34 +86,82 @@ flag = "res://assets/flags/satura.svg"
 map = "res://assets/flags/satura_map.svg"
 mask = "res://assets/flags/satura_mask.svg"
 
+[node name="Status" parent="Countries/Country" index="5"]
+offset_left = 240.0
+offset_top = 160.0
+offset_right = 368.0
+offset_bottom = 206.0
+
 [node name="Country2" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Carateria"
 flag = "res://assets/flags/carateria.svg"
 map = "res://assets/flags/carateria_map.svg"
 mask = "res://assets/flags/carateria_mask.svg"
+metadata/_edit_lock_ = true
+
+[node name="Status" parent="Countries/Country2" index="5"]
+offset_left = 520.0
+offset_top = 208.0
+offset_right = 648.0
+offset_bottom = 254.0
 
 [node name="Country3" parent="Countries" instance=ExtResource("1_wohfb")]
-country_name = "Boerland"
+country_name = "Beorland"
 flag = "res://assets/flags/bingus1.svg"
 map = "res://assets/flags/green_map.svg"
 mask = "res://assets/flags/green_mask.svg"
+metadata/_edit_lock_ = true
+
+[node name="Status" parent="Countries/Country3" index="5"]
+offset_left = 56.0
+offset_top = 128.0
+offset_right = 184.0
+offset_bottom = 174.0
 
 [node name="Country4" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Arcasia"
 flag = "res://assets/flags/bossman2.svg"
 map = "res://assets/flags/orange_map.svg"
 mask = "res://assets/flags/orange_mask.svg"
+metadata/_edit_lock_ = true
+
+[node name="Status" parent="Countries/Country4" index="5"]
+offset_left = 392.0
+offset_top = 160.0
+offset_right = 520.0
+offset_bottom = 206.0
 
 [node name="Country5" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Contana"
 flag = "res://assets/flags/bossman1.svg"
 map = "res://assets/flags/gray_map.svg"
 mask = "res://assets/flags/gray_mask.svg"
+metadata/_edit_lock_ = true
+
+[node name="Status" parent="Countries/Country5" index="5"]
+offset_left = 520.0
+offset_top = 328.0
+offset_right = 648.0
+offset_bottom = 374.0
 
 [node name="Country6" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Southern Isles"
 flag = "res://assets/flags/bingus1(1).svg"
 map = "res://assets/flags/yellow_map.svg"
 mask = "res://assets/flags/yellow_mask.svg"
+metadata/_edit_lock_ = true
+
+[node name="Status" parent="Countries/Country6" index="5"]
+offset_left = 256.0
+offset_top = 376.0
+offset_right = 384.0
+offset_bottom = 422.0
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]
+
+[editable path="Countries/Country"]
+[editable path="Countries/Country2"]
+[editable path="Countries/Country3"]
+[editable path="Countries/Country4"]
+[editable path="Countries/Country5"]
+[editable path="Countries/Country6"]

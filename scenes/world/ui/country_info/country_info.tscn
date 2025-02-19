@@ -7,7 +7,7 @@
 layout_mode = 3
 anchors_preset = 0
 offset_right = 384.0
-offset_bottom = 256.0
+offset_bottom = 512.0
 script = ExtResource("1_rn7no")
 
 [node name="Flag" type="TextureRect" parent="."]
@@ -79,3 +79,14 @@ offset_bottom = 242.0
 theme_override_font_sizes/font_size = 24
 text = "Cooperation: 5"
 vertical_alignment = 1
+
+[node name="NewEvent" type="Button" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 456.0
+offset_right = 368.0
+offset_bottom = 504.0
+theme_override_font_sizes/font_size = 24
+text = "New Event"
+
+[connection signal="pressed" from="NewEvent" to="." method="_on_new_event_pressed"]
