@@ -24,12 +24,17 @@ func _ready() -> void:
 	var source_image: Image = load(map).get_image()
 	bitmap.create_from_image_alpha(source_image)
 	$Map.texture_click_mask = bitmap
-	economy.economy = starting_economy
-	stability.stability = starting_stability
-	military.military = starting_military
+	generate_starting_attribute_values()
 
-func new_turn(_turn: int) -> void:
+func new_turn() -> void:
 	population += (economy.economy - 5) + (stability.stability - 5)
+	
+func generate_starting_attribute_values() -> void:
+	economy.economy = randi_range(3, 7)
+	stability.stability = randi_range(3, 7)
+	military.military = randi_range(3, 7)
+	cooperation.cooperation = randi_range(3, 7)
+	population = randi_range(40, 60)
 	
 func modify_country_value(country: String, attribute: String, modifier: int) -> void:
 	if country == country_name:
@@ -40,16 +45,16 @@ func modify_country_value(country: String, attribute: String, modifier: int) -> 
 
 		match attribute:
 			"Economy":
-				economy.economy += modifier
+				economy.modify_economy(modifier)
 				$Status.text += "Economy"
 			"Stability":
-				stability.stability += modifier
+				stability.modify_stability(modifier)
 				$Status.text += "Stability"
 			"Military":
-				military.military += modifier
+				military.modify_military(modifier)
 				$Status.text += "Military"
 			"Cooperation":
-				cooperation.cooperation += modifier
+				cooperation.modify_cooperation(modifier)
 				$Status.text += "Cooperation"
 			"Population":
 				population += modifier
@@ -57,7 +62,7 @@ func modify_country_value(country: String, attribute: String, modifier: int) -> 
 		$Status.text += "\n"
 		$Status.text.strip_edges()
 		move_status_label()
-	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
+	#SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
 
 func _on_map_pressed() -> void:
 	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)

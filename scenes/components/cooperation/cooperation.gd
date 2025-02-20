@@ -10,3 +10,6 @@ func modify_cooperation(modifier: int) -> void:
 	if cooperation <= 0:
 		cooperation = 0
 		emit_signal("no_cooperation")
+	if cooperation >= 10:
+		cooperation = 10
+		

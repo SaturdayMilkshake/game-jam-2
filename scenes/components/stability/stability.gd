@@ -10,3 +10,5 @@ func modify_stability(modifier: int) -> void:
 	if stability <= 0:
 		stability = 0
 		emit_signal("no_stability")
+	if stability >= 10:
+		stability = 10

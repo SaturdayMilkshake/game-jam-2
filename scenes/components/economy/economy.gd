@@ -7,9 +7,8 @@ signal no_economy
 func modify_economy(modifier: int) -> void:
 	economy += modifier
 	
-	if modifier > 0:
-		pass
-	
 	if economy <= 0:
 		economy = 0
 		emit_signal("no_economy")
+	if economy >= 10:
+		economy = 10

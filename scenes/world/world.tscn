@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbvkf5dobplar"]
+[gd_scene load_steps=9 format=3 uid="uid://cbvkf5dobplar"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_il811"]
 [ext_resource type="PackedScene" uid="uid://cdycehgp78nr0" path="res://scenes/country/country.tscn" id="1_wohfb"]
 [ext_resource type="PackedScene" uid="uid://da367dath0qla" path="res://scenes/game_manager/game_manager.tscn" id="3_5iws7"]
 [ext_resource type="PackedScene" uid="uid://wa8c6q8bsggs" path="res://scenes/world/ui/event_info/event_info.tscn" id="3_21bx7"]
 [ext_resource type="PackedScene" uid="uid://bs357xfrieidy" path="res://scenes/world/ui/country_info/country_info.tscn" id="3_txpeh"]
+[ext_resource type="PackedScene" uid="uid://dca8skq7b8w1m" path="res://scenes/world/ui/turn_button/turn_button.tscn" id="4_x1ahm"]
 [ext_resource type="PackedScene" uid="uid://s7thsiwi1uuy" path="res://scenes/options/audio_toggle.tscn" id="6_3geyv"]
 [ext_resource type="Texture2D" uid="uid://c7tlb7n1slofl" path="res://assets/flags/map_nobg.svg" id="6_mxnvk"]
 
@@ -32,16 +33,6 @@ color = Color(0.229593, 0.229593, 0.229593, 1)
 visible = false
 
 [node name="EventInfo" parent="LeftPanel" instance=ExtResource("3_21bx7")]
-
-[node name="Date" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 15.0
-offset_right = 248.0
-offset_bottom = 48.0
-theme_override_font_sizes/font_size = 24
-text = "Turn 1"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("3_5iws7")]
 
@@ -76,6 +67,13 @@ offset_right = 1152.0
 offset_bottom = 576.0
 texture = ExtResource("6_mxnvk")
 metadata/_edit_lock_ = true
+
+[node name="TurnButton" parent="." instance=ExtResource("4_x1ahm")]
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 52.0
+text = "Press to Begin"
 
 [node name="Countries" type="Node2D" parent="."]
 position = Vector2(384, 64)

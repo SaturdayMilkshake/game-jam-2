@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dca8skq7b8w1m"]
+
+[ext_resource type="Script" path="res://scenes/world/ui/turn_button/turn_button.gd" id="1_ed0ck"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_liip5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hlqfq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4po6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xl1gf"]
+
+[node name="TurnButton" type="Button"]
+anchors_preset = -1
+anchor_right = 0.00694444
+anchor_bottom = 0.0216049
+offset_right = 232.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_liip5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hlqfq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h4po6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xl1gf")
+text = "Turn 1"
+alignment = 0
+script = ExtResource("1_ed0ck")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

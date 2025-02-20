@@ -10,7 +10,6 @@ func _ready() -> void:
 	SignalHandler.connect("event_option_selected", Callable(self, "event_option_selected"))
 	SignalHandler.connect("new_event_requested", Callable(self, "new_event_requested"))
 	initialize_events()
-	generate_new_event()
 
 func initialize_events() -> void:
 	var event_file: FileAccess = FileAccess.open("res://misc/event_spreadsheet.csv", FileAccess.READ)
@@ -33,17 +32,18 @@ func generate_new_event() -> void:
 	SignalHandler.emit_signal("event_generated", current_event[1], current_event[2], current_event[3], current_event[4], current_event[5])
 
 func event_option_selected(option: int) -> void:
-	match option:
-		1:
-			SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[6], current_event[7].to_int())
-			SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[8], current_event[9].to_int())
-			SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[10], current_event[11].to_int())
-			SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[12], current_event[13].to_int())
-		2:
-			SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[14], current_event[15].to_int())
-			SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[16], current_event[17].to_int())
-			SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[18], current_event[19].to_int())
-			SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[20], current_event[21].to_int())
+	if current_event:
+		match option:
+			1:
+				SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[6], current_event[7].to_int())
+				SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[8], current_event[9].to_int())
+				SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[10], current_event[11].to_int())
+				SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[12], current_event[13].to_int())
+			2:
+				SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[14], current_event[15].to_int())
+				SignalHandler.emit_signal("modify_country_value", current_event[2], current_event[16], current_event[17].to_int())
+				SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[18], current_event[19].to_int())
+				SignalHandler.emit_signal("modify_country_value", current_event[3], current_event[20], current_event[21].to_int())
 
 func new_event_requested() -> void:
 	generate_new_event()

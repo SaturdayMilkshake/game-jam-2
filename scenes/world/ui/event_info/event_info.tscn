@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://wa8c6q8bsggs"]
+[gd_scene load_steps=4 format=3 uid="uid://wa8c6q8bsggs"]
 
 [ext_resource type="Script" path="res://scenes/world/ui/event_info/event_info.gd" id="1_5656b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6ie3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wkv1d"]
 
 [node name="EventInfo" type="Control"]
 layout_mode = 3
@@ -16,7 +20,6 @@ offset_top = 16.0
 offset_right = 256.0
 offset_bottom = 66.0
 theme_override_font_sizes/font_size = 36
-text = "Event"
 vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="."]
@@ -26,8 +29,6 @@ offset_top = 72.0
 offset_right = 368.0
 offset_bottom = 376.0
 bbcode_enabled = true
-text = "[color=pink]Satura[/color] and [color=cyan]Carateria[/color] are having a territorial dispute on the status of Neutralia. 
-To what country should the island be awarded to?"
 
 [node name="Option1" type="Button" parent="."]
 layout_mode = 0
@@ -35,8 +36,9 @@ offset_left = 16.0
 offset_top = 392.0
 offset_right = 368.0
 offset_bottom = 440.0
+focus_mode = 1
 theme_override_font_sizes/font_size = 24
-text = "Approve"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o6ie3")
 
 [node name="Option2" type="Button" parent="."]
 layout_mode = 0
@@ -44,8 +46,9 @@ offset_left = 16.0
 offset_top = 456.0
 offset_right = 368.0
 offset_bottom = 504.0
+focus_mode = 1
 theme_override_font_sizes/font_size = 24
-text = "Reject"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wkv1d")
 
 [connection signal="pressed" from="Option1" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="Option2" to="." method="_on_option_2_pressed"]

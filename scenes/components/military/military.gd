@@ -10,3 +10,5 @@ func modify_military(modifier: int) -> void:
 	if military <= 0:
 		military = 0
 		emit_signal("no_military")
+	if military >= 10:
+		military = 10

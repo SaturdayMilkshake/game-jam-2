@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs357xfrieidy"]
+[gd_scene load_steps=4 format=3 uid="uid://bs357xfrieidy"]
 
 [ext_resource type="Script" path="res://scenes/world/ui/country_info/country_info.gd" id="1_rn7no"]
 [ext_resource type="Texture2D" uid="uid://ccx85m0m64euw" path="res://assets/flags/satura.svg" id="2_pgu2d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ut37"]
 
 [node name="CountryInfo" type="Control"]
 layout_mode = 3
@@ -80,13 +82,14 @@ theme_override_font_sizes/font_size = 24
 text = "Cooperation: 5"
 vertical_alignment = 1
 
-[node name="NewEvent" type="Button" parent="."]
+[node name="OpenEvents" type="Button" parent="."]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 456.0
 offset_right = 368.0
 offset_bottom = 504.0
 theme_override_font_sizes/font_size = 24
-text = "New Event"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ut37")
+text = "Show Events"
 
-[connection signal="pressed" from="NewEvent" to="." method="_on_new_event_pressed"]
+[connection signal="pressed" from="OpenEvents" to="." method="_on_open_events_pressed"]
