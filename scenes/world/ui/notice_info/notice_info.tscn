@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca7gygaworqno"]
+
+[ext_resource type="Script" path="res://scenes/world/ui/notice_info/notice_info.gd" id="1_1pe52"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ivfs"]
+
+[node name="NoticeInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -768.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1pe52")
+
+[node name="Notice" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 36
+text = "Notice"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="."]
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 368.0
+offset_bottom = 376.0
+bbcode_enabled = true
+text = "Test notice for testing purposes."
+
+[node name="NextEvent" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 456.0
+offset_right = 368.0
+offset_bottom = 504.0
+focus_mode = 1
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ivfs")
+text = "Next Event"

@@ -3,6 +3,7 @@ extends Button
 var game_active: bool = false
 
 func _ready() -> void:
+	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
 	SignalHandler.connect("turn_updated", Callable(self, "turn_updated"))
 	SignalHandler.connect("finished_all_events_this_turn", Callable(self, "events_completed"))
 
@@ -16,7 +17,10 @@ func _on_pressed() -> void:
 	SignalHandler.emit_signal("new_turn")
 
 func turn_updated(turn: int) -> void:
-	self.text = "Turn " + str(turn)
+	self.text = "Year " + str(turn + 1940)
 
 func events_completed() -> void:
 	self.disabled = false
+
+func new_turn() -> void:
+	self.disabled = true

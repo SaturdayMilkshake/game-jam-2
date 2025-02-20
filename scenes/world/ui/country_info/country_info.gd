@@ -36,9 +36,12 @@ func color_labels(population: int, economy: int, stability: int, military: int, 
 	if military <= 3:
 		$Military.modulate = Color.INDIAN_RED
 	elif military >= 10:
-		$Military.modulate = Color.SEA_GREEN
+		$Military.modulate = Color.INDIAN_RED
 		
-	if cooperation <= 3:
+	$Cooperation.visible = true
+	if cooperation <= 0:
+		$Cooperation.visible = false
+	elif cooperation <= 3:
 		$Cooperation.modulate = Color.INDIAN_RED
 	elif cooperation >= 10:
 		$Cooperation.modulate = Color.SEA_GREEN

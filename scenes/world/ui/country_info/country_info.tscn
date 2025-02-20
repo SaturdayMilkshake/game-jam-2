@@ -82,6 +82,26 @@ theme_override_font_sizes/font_size = 24
 text = "Cooperation: 5"
 vertical_alignment = 1
 
+[node name="Statuses" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 256.0
+offset_right = 376.0
+offset_bottom = 306.0
+theme_override_font_sizes/font_size = 28
+text = "Statuses"
+vertical_alignment = 1
+
+[node name="StatusesList" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 304.0
+offset_right = 368.0
+offset_bottom = 440.0
+bbcode_enabled = true
+text = "[color=orange]Nuclear State[/color]
+-Will launch nukes as a last resort when Military reaches 0."
+
 [node name="OpenEvents" type="Button" parent="."]
 layout_mode = 0
 offset_left = 16.0

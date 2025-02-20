@@ -16,6 +16,12 @@ extends Node2D
 @onready var military: Node = $Military
 @onready var cooperation: Node = $Cooperation
 
+#Statuses:
+#Nuclear Weapons
+var nuclear_state: bool = false
+var nuclear_program_progression_active: bool = false
+var nuclear_program_progress: int = 0
+
 func _ready() -> void:
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
 	SignalHandler.connect("modify_country_value", Callable(self, "modify_country_value"))
@@ -30,11 +36,11 @@ func new_turn() -> void:
 	population += (economy.economy - 5) + (stability.stability - 5)
 	
 func generate_starting_attribute_values() -> void:
-	economy.economy = randi_range(3, 7)
-	stability.stability = randi_range(3, 7)
-	military.military = randi_range(3, 7)
-	cooperation.cooperation = randi_range(3, 7)
-	population = randi_range(40, 60)
+	economy.economy = randi_range(4, 6)
+	stability.stability = randi_range(4, 6)
+	military.military = randi_range(4, 6)
+	cooperation.cooperation = randi_range(4, 6)
+	population = randi_range(45, 55)
 	
 func modify_country_value(country: String, attribute: String, modifier: int) -> void:
 	if country == country_name:

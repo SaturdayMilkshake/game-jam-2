@@ -20,8 +20,11 @@ func _on_option_1_pressed() -> void:
 	option_selected()
 
 func _on_option_2_pressed() -> void:
-	SignalHandler.emit_signal("event_option_selected", 2)
-	option_selected()
+	if current_event > events_this_turn:
+		SignalHandler.emit_signal("new_turn")
+	else:
+		SignalHandler.emit_signal("event_option_selected", 2)
+		option_selected()
 	
 func game_started() -> void:
 	SignalHandler.emit_signal("new_event_requested")
@@ -56,7 +59,8 @@ func option_selected() -> void:
 	current_event += 1
 	if current_event > events_this_turn:
 		$Option1.visible = false
-		$Option2.visible = false
+		$Option2.visible = true
+		$Option2.text = "New Turn"
 		$Event.text = "Turn Finished"
 		$Description.text = "You have completed all events this turn. Please press New Turn to continue."
 		SignalHandler.emit_signal("finished_all_events_this_turn")
@@ -68,5 +72,6 @@ func set_event_info_visibility(status: bool) -> void:
 	self.visible = status
 	if current_event > events_this_turn:	
 		$Option1.visible = false
-		$Option2.visible = false
+		$Option2.visible = true
+		$Option2.text = "New Turn"
 		$Description.text = "You have completed all events this turn. Please press New Turn to continue."
