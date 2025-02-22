@@ -16,8 +16,14 @@ extends Node2D
 @onready var military: Node = $Military
 @onready var cooperation: Node = $Cooperation
 
-var statuses: Array = ["[color=orange]Nuclear State[/color]"]
-var status_descriptions: Array = ["Will launch nukes as a last resort when Military reaches 0."]
+var statuses: Array = [
+	"[color=orange]Nuclear State[/color]",
+	"[color=gray]Backed Out[/color]"
+]
+var status_descriptions: Array = [
+	"Will launch nukes as a last resort when Military reaches 0.",
+	"This country's attributes can no longer be influenced."
+	]
 
 var status_text: String = ""
 
@@ -26,6 +32,12 @@ var status_text: String = ""
 var nuclear_state: bool = false
 var nuclear_program_progression_active: bool = false
 var nuclear_program_progress: int = 0
+
+#Peace
+var treaty_signed: bool = false
+
+#Backed Out
+var backed_out: bool = false
 
 var original_status_label_position: Vector2 = Vector2.ZERO
 
@@ -47,9 +59,26 @@ func new_turn() -> void:
 	population += (economy.economy - 5) + (stability.stability - 5)
 	if nuclear_program_progression_active:
 		nuclear_program_progress += military.military
-	if nuclear_program_progress >= 10 && !nuclear_state:
+	if nuclear_program_progress >= 50 && !nuclear_state:
 		nuclear_state = true
 		$Status.text += "[center][color=white]Nuclear State[/color]"
+	if cooperation.cooperation <= 0 && !backed_out:
+		backed_out = true
+		$Status.text += "[center][color=white]Backed Out[/color]"
+		
+	#attributes
+	if economy.economy <= 0:
+		SignalHandler.emit_signal("no_economy")
+	if stability.stability <= 0:
+		SignalHandler.emit_signal("no_stability")
+	if military.military <= 0:
+		SignalHandler.emit_signal("no_military")
+		if nuclear_state:
+			SignalHandler.emit_signal("game_over", "Nuclear Exchange")
+	if military.military >= 10:
+		SignalHandler.emit_signal("excess_military")
+	if cooperation.cooperation <= 0:
+		SignalHandler.emit_signal("no_cooperation")
 	
 func generate_starting_attribute_values() -> void:
 	economy.economy = randi_range(4, 6)
@@ -128,12 +157,12 @@ func move_status_label() -> void:
 			tween.kill()
 		tween = create_tween()
 		$Status.visible = true
-		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.8).set_trans(Tween.TRANS_CIRC)
+		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 1).set_trans(Tween.TRANS_CIRC)
 		tween.tween_callback(reset_status_label_position)
 	else:
 		tween = create_tween()
 		$Status.visible = true
-		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.8).set_trans(Tween.TRANS_CIRC)
+		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 1).set_trans(Tween.TRANS_CIRC)
 		tween.tween_callback(reset_status_label_position)
 
 func reset_status_label_position() -> void:
@@ -153,7 +182,10 @@ func update_country_info(country: String) -> void:
 func check_statuses() -> void:
 	if nuclear_state:
 		status_text += statuses[0] + "\n"
-		status_text += status_descriptions[0]
+		status_text += status_descriptions[0] + "\n"
+	if backed_out:
+		status_text += statuses[1] + "\n"
+		status_text += status_descriptions[1]+ "\n"
 
 func pulse_country(status: bool) -> void:
 	$Map.material.set("shader_parameter/pulsing_active", status)

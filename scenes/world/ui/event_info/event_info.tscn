@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://wa8c6q8bsggs"]
+[gd_scene load_steps=5 format=3 uid="uid://wa8c6q8bsggs"]
 
 [ext_resource type="Script" path="res://scenes/world/ui/event_info/event_info.gd" id="1_5656b"]
+[ext_resource type="AudioStream" uid="uid://63462v8qxibw" path="res://assets/audio/write.ogg" id="2_sll8o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6ie3"]
 
@@ -49,6 +50,10 @@ offset_bottom = 504.0
 focus_mode = 1
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wkv1d")
+
+[node name="OptionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sll8o")
+volume_db = 10.0
 
 [connection signal="pressed" from="Option1" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="Option2" to="." method="_on_option_2_pressed"]

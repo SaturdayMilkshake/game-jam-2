@@ -11,6 +11,7 @@ func _ready() -> void:
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
 	SignalHandler.connect("game_started", Callable(self, "game_started"))
 	SignalHandler.connect("set_event_info_visibility", Callable(self, "set_event_info_visibility"))
+	SignalHandler.connect("game_ended", Callable(self, "game_ended"))
 	$Option1.visible = false
 	$Option2.visible = false
 	self.visible = false
@@ -18,6 +19,7 @@ func _ready() -> void:
 func _on_option_1_pressed() -> void:
 	SignalHandler.emit_signal("event_option_selected", 1)
 	option_selected()
+	$OptionAudio.play()
 
 func _on_option_2_pressed() -> void:
 	if current_event > events_this_turn:
@@ -25,6 +27,7 @@ func _on_option_2_pressed() -> void:
 	else:
 		SignalHandler.emit_signal("event_option_selected", 2)
 		option_selected()
+		$OptionAudio.play()
 	
 func game_started() -> void:
 	SignalHandler.emit_signal("new_event_requested")
@@ -62,8 +65,8 @@ func option_selected() -> void:
 		$Option1.visible = false
 		$Option2.visible = true
 		$Option2.text = "New Turn"
-		$Event.text = "Turn Finished"
-		$Description.text = "You have completed all events this turn. Please press New Turn to continue."
+		$Event.text = "Year Finished"
+		$Description.text = "You have completed all events this year. Please press New Year to continue."
 		SignalHandler.emit_signal("finished_all_events_this_turn")
 	else:
 		$Event.text = "Event " + str(current_event) + " / " + str(events_this_turn)
@@ -74,5 +77,8 @@ func set_event_info_visibility(status: bool) -> void:
 	if current_event > events_this_turn:	
 		$Option1.visible = false
 		$Option2.visible = true
-		$Option2.text = "New Turn"
-		$Description.text = "You have completed all events this turn. Please press New Turn to continue."
+		$Option2.text = "New Year"
+		$Description.text = "You have completed all events this year. Please press New Year to continue."
+
+func game_ended() -> void:
+	self.visible = false

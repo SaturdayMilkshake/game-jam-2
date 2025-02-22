@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cbvkf5dobplar"]
+[gd_scene load_steps=23 format=3 uid="uid://cbvkf5dobplar"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_il811"]
 [ext_resource type="PackedScene" uid="uid://cdycehgp78nr0" path="res://scenes/country/country.tscn" id="1_wohfb"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c7tlb7n1slofl" path="res://assets/flags/map_nobg.svg" id="6_mxnvk"]
 [ext_resource type="PackedScene" uid="uid://cmylfp8sh4unx" path="res://scenes/world/ui/global_status/global_status.tscn" id="10_modfb"]
 [ext_resource type="PackedScene" uid="uid://ba61uj6qpgffj" path="res://scenes/world/ui/influence/influence.tscn" id="11_4g70f"]
+[ext_resource type="PackedScene" uid="uid://dqoln44w5jcbh" path="res://scenes/world/ui/game_over/game_over.tscn" id="11_83juw"]
+[ext_resource type="PackedScene" uid="uid://cwxcuy4jjbd7d" path="res://scenes/transition/transition.tscn" id="11_gvv80"]
 [ext_resource type="Shader" path="res://scenes/country/country_map.gdshader" id="12_i51ti"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1cuy"]
@@ -283,6 +285,14 @@ offset_left = 248.0
 offset_top = 328.0
 offset_right = 376.0
 offset_bottom = 374.0
+
+[node name="GameOver" parent="." instance=ExtResource("11_83juw")]
+offset_left = 448.0
+offset_top = 128.0
+offset_right = 448.0
+offset_bottom = 128.0
+
+[node name="Transition" parent="." instance=ExtResource("11_gvv80")]
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]
 

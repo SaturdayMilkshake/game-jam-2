@@ -1,25 +1,28 @@
 extends Control
 
 var add_attribute_mode: bool = true
+var game_active: bool = true
 
 func _ready() -> void:
 	SignalHandler.connect("country_selected", Callable(self, "country_selected"))
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
+	SignalHandler.connect("game_ended", Callable(self, "game_ended"))
 	$InfluenceAttribute/AddAttribute.disabled = true
 	$InfluenceAttribute/SubtractAttribute.disabled = false
 	add_attribute_mode = true
 
 func country_selected(country: String, flag: String, population: int, economy: int, stability: int, military: int, cooperation: int, statuses: String) -> void:
-	self.visible = true
-	$CountryName.text = country
-	$Flag.texture = load(flag)
-	$Population.text = "Pop.: " + str(population)
-	$Economy.text = "Economy: " + str(economy)
-	$Stability.text = "Stability: " + str(stability)
-	$Military.text = "Military: " + str(military)
-	$Cooperation.text = "Cooperation: " + str(cooperation)
-	color_labels(population, economy, stability, military, cooperation)
-	set_country_statuses(statuses)
+	if game_active:
+		self.visible = true
+		$CountryName.text = country
+		$Flag.texture = load(flag)
+		$Population.text = "Pop.: " + str(population)
+		$Economy.text = "Economy: " + str(economy)
+		$Stability.text = "Stability: " + str(stability)
+		$Military.text = "Military: " + str(military)
+		$Cooperation.text = "Cooperation: " + str(cooperation)
+		color_labels(population, economy, stability, military, cooperation)
+		set_country_statuses(statuses)
 
 func color_labels(population: int, economy: int, stability: int, military: int, cooperation: int) -> void:
 	if economy <= 3:
@@ -131,3 +134,7 @@ func _on_cooperation_pressed() -> void:
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Cooperation", add_attribute_mode)
 	elif ((int($Cooperation.text) < 10 && int($Cooperation.text) >= 0) && add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Cooperation", add_attribute_mode)
+
+func game_ended() -> void:
+	game_active = false
+	self.visible = false

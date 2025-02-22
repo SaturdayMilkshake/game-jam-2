@@ -1,9 +1,77 @@
-[gd_scene format=3 uid="uid://dqoln44w5jcbh"]
+[gd_scene load_steps=5 format=3 uid="uid://dqoln44w5jcbh"]
+
+[ext_resource type="Script" path="res://scenes/world/ui/game_over/game_over.gd" id="1_y5v5i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf04d"]
+bg_color = Color(0.14902, 0.14902, 0.14902, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4alkk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ys3ce"]
 
 [node name="GameOver" type="Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_y5v5i")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 384.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jf04d")
+
+[node name="GameOver" type="Label" parent="."]
+z_index = 3
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 560.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 32
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+z_index = 3
+layout_mode = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 576.0
+offset_bottom = 320.0
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="PlayAgain" type="Button" parent="."]
+z_index = 3
+layout_mode = 0
+offset_left = 72.0
+offset_top = 328.0
+offset_right = 248.0
+offset_bottom = 376.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4alkk")
+text = "Play Again?"
+
+[node name="BackToTitle" type="Button" parent="."]
+z_index = 3
+offset_left = 392.0
+offset_top = 328.0
+offset_right = 568.0
+offset_bottom = 376.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ys3ce")
+text = "Back To Title"
+
+[connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]

@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8a1x8bhu5ikd"]
+
+[ext_resource type="Script" path="res://scenes/credits/credits.gd" id="1_ejn25"]
+[ext_resource type="PackedScene" uid="uid://cwxcuy4jjbd7d" path="res://scenes/transition/transition.tscn" id="2_8dgji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjha5"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_ejn25")
+
+[node name="CreditsContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 384.0
+offset_top = 120.0
+offset_right = 768.0
+offset_bottom = 408.0
+metadata/_edit_group_ = true
+
+[node name="Programming" type="Label" parent="CreditsContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 24
+text = "Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CreditsContainer/Programming"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 191.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 18
+text = "SaturdayMilkshake"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Art" type="Label" parent="CreditsContainer"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 40.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 24
+text = "Art"
+
+[node name="Label" type="Label" parent="CreditsContainer/Art"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 18
+text = "Oxidized"
+
+[node name="Music" type="Label" parent="CreditsContainer"]
+layout_mode = 0
+offset_top = 128.0
+offset_right = 68.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 24
+text = "Music"
+
+[node name="Label" type="Label" parent="CreditsContainer/Music"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 18
+text = "Oxidized"
+
+[node name="SoundEffects" type="Label" parent="CreditsContainer"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 157.0
+offset_bottom = 226.0
+theme_override_font_sizes/font_size = 24
+text = "Sound Effects"
+
+[node name="Label" type="Label" parent="CreditsContainer/SoundEffects"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 18
+text = "Oxidized"
+
+[node name="Godot" type="Label" parent="CreditsContainer"]
+layout_mode = 0
+offset_top = 256.0
+offset_right = 350.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 24
+text = "Created with Godot Engine 4.3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToTitle" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 448.0
+offset_right = 896.0
+offset_bottom = 488.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wjha5")
+text = "Back To Title"
+
+[node name="Transition" parent="." instance=ExtResource("2_8dgji")]
+
+[connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]

@@ -28,15 +28,15 @@ vertical_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/PeaceProcess"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="WarProgress" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="WarProgress" type="Label" parent="HBoxContainer/WarProgress"]
 custom_minimum_size = Vector2(256, 32)
 layout_mode = 2
 text = "War Progress"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/WarProgress"]
 layout_mode = 2

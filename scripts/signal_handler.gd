@@ -43,3 +43,16 @@ signal influence_used(country: String, attribute: String, add_mode: bool)
 signal peace_process_started
 
 signal update_global_status(status: String, amount: int)
+
+#country attribute statuses
+signal no_economy
+signal no_stability
+signal no_military
+signal no_cooperation
+signal excess_military
+
+signal game_over(reason: String)
+signal game_ended
+
+#transition
+signal transition_requested(fade_in: bool, target: String)
