@@ -27,6 +27,8 @@ var nuclear_program_progress: int = 0
 
 var original_status_label_position: Vector2 = Vector2.ZERO
 
+var tween: Tween
+
 func _ready() -> void:
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
 	SignalHandler.connect("modify_country_value", Callable(self, "modify_country_value"))
@@ -57,6 +59,7 @@ func generate_starting_attribute_values() -> void:
 	
 func modify_country_value(country: String, attribute: String, modifier: int) -> void:
 	if country == country_name:
+		$Status.size = $Status.get_minimum_size()
 		match attribute:
 			"Economy":
 				economy.modify_economy(modifier)
@@ -65,6 +68,7 @@ func modify_country_value(country: String, attribute: String, modifier: int) -> 
 				elif modifier < 0:
 					$Status.text += "[center][color=indianred]-"
 				$Status.text += "Economy"
+				$Status.text += "\n"
 			"Stability":
 				stability.modify_stability(modifier)
 				if modifier > 0:
@@ -72,6 +76,7 @@ func modify_country_value(country: String, attribute: String, modifier: int) -> 
 				elif modifier < 0:
 					$Status.text += "[center][color=indianred]-"
 				$Status.text += "Stability"
+				$Status.text += "\n"
 			"Military":
 				military.modify_military(modifier)
 				if modifier > 0:
@@ -79,6 +84,7 @@ func modify_country_value(country: String, attribute: String, modifier: int) -> 
 				elif modifier < 0:
 					$Status.text += "[center][color=indianred]-"
 				$Status.text += "Military"
+				$Status.text += "\n"
 			"Cooperation":
 				cooperation.modify_cooperation(modifier)
 				if modifier > 0:
@@ -86,15 +92,15 @@ func modify_country_value(country: String, attribute: String, modifier: int) -> 
 				elif modifier < 0:
 					$Status.text += "[center][color=indianred]-"
 				$Status.text += "Cooperation"
+				$Status.text += "\n"
 			"Population":
 				population += modifier
 				$Status.text += "Population"
+				$Status.text += "\n"
 			"NuclearProgress":
 				nuclear_program_progression_active = true
 			"Peace":
 				pass
-		$Status.text += "\n"
-		$Status.text = $Status.text.strip_edges()
 		if $Status.text != "":
 			move_status_label()
 	elif country == "ALL":
@@ -111,10 +117,18 @@ func _on_map_mouse_exited() -> void:
 	self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func move_status_label() -> void:
-	var tween = create_tween()
-	$Status.visible = true
-	tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.7).set_trans(Tween.TRANS_CIRC)
-	tween.tween_callback(reset_status_label_position)
+	if tween:
+		if tween.is_running():
+			tween.kill()
+		tween = create_tween()
+		$Status.visible = true
+		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.7).set_trans(Tween.TRANS_CIRC)
+		tween.tween_callback(reset_status_label_position)
+	else:
+		tween = create_tween()
+		$Status.visible = true
+		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.7).set_trans(Tween.TRANS_CIRC)
+		tween.tween_callback(reset_status_label_position)
 
 func reset_status_label_position() -> void:
 	$Status.visible = false
