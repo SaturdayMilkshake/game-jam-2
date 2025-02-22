@@ -39,7 +39,7 @@ func country_selected(_country: String, _flag: String, _population: int, _econom
 func event_generated(event_description: String, country_1: String, country_2: String, option_1: String, option_2: String) -> void:
 	var new_text: String = event_description.replace("COUNTRY1", country_1).replace("COUNTRY2", country_2)
 	#wtf but also this is a game jam so who cares
-	var new_colored_text: String = new_text.replace("Satura", "[color=crimson]Satura[/color]").replace("Carateria", "[color=cyan]Carateria[/color]").replace("Beorland", "[color=lime]Beorland[/color]").replace("Arcasia", "[color=orange]Arcasia[/color]").replace("Contana", "[color=lightslategray]Contana[/color]").replace("Southern Isles", "[color=yellow]Southern Isles[/color]")
+	var new_colored_text: String = new_text.replace("Satura", "[color=crimson]Satura[/color]").replace("Carateria", "[color=cyan]Carateria[/color]").replace("Beorland", "[color=lime]Beorland[/color]").replace("Leipand", "[color=orange]Leipand[/color]").replace("Lumeburg", "[color=lightslategray]Lumeburg[/color]").replace("Southern Isles", "[color=yellow]Southern Isles[/color]")
 	$Description.text = new_colored_text
 	var new_option_1: String = option_1.replace("COUNTRY1", country_1).replace("COUNTRY2", country_2)
 	$Option1.text = new_option_1

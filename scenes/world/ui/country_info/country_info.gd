@@ -109,13 +109,25 @@ func _on_subtract_attribute_pressed() -> void:
 	add_attribute_mode = false
 
 func _on_economy_pressed() -> void:
-	SignalHandler.emit_signal("influence_used", $CountryName.text, "Economy", add_attribute_mode)
+	if ((int($Economy.text) <= 10 && int($Economy.text) > 0) && !add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Economy", add_attribute_mode)
+	elif ((int($Economy.text) < 10 && int($Economy.text) >= 0) && add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Economy", add_attribute_mode)
 
 func _on_stability_pressed() -> void:
-	SignalHandler.emit_signal("influence_used", $CountryName.text, "Stability", add_attribute_mode)
+	if ((int($Stability.text) <= 10 && int($Stability.text) > 0) && !add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Stability", add_attribute_mode)
+	elif ((int($Stability.text) < 10 && int($Stability.text) >= 0) && add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Stability", add_attribute_mode)
 
 func _on_military_pressed() -> void:
-	SignalHandler.emit_signal("influence_used", $CountryName.text, "Military", add_attribute_mode)
+	if ((int($Military.text) <= 10 && int($Military.text) > 0) && !add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Military", add_attribute_mode)
+	elif ((int($Military.text) < 10 && int($Military.text) >= 0) && add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Military", add_attribute_mode)
 
 func _on_cooperation_pressed() -> void:
-	SignalHandler.emit_signal("influence_used", $CountryName.text, "Cooperation", add_attribute_mode)
+	if ((int($Cooperation.text) <= 10 && int($Cooperation.text) > 0) && !add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Cooperation", add_attribute_mode)
+	elif ((int($Cooperation.text) < 10 && int($Cooperation.text) >= 0) && add_attribute_mode):
+		SignalHandler.emit_signal("influence_used", $CountryName.text, "Cooperation", add_attribute_mode)

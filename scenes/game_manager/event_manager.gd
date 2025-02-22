@@ -1,6 +1,6 @@
 extends Node
 
-var countries: Array[String] = ["Satura", "Carateria", "Arcasia", "Contana", "Beorland", "Southern Isles"]
+var countries: Array[String] = ["Satura", "Carateria", "Leipand", "Lumeburg", "Beorland", "Southern Isles"]
 
 var events: Array = []
 
