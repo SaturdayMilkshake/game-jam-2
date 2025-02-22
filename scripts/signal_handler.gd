@@ -28,3 +28,9 @@ signal finished_all_events_this_turn
 
 @warning_ignore("unused_signal")
 signal game_started
+
+#resources
+signal influence_updated(influence: int)
+
+#special event
+signal peace_process_started

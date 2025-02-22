@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba61uj6qpgffj"]
+
+[ext_resource type="Script" path="res://scenes/world/ui/influence/influence.gd" id="1_kgl8a"]
+
+[node name="Influence" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kgl8a")
+
+[node name="Influence" type="Label" parent="."]
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 18
+text = "Influence: 0"
+vertical_alignment = 1

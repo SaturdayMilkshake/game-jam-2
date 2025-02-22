@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_1pe52")
 
 [node name="Notice" type="Label" parent="."]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 256.0
@@ -25,6 +26,7 @@ text = "Notice"
 vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 72.0
 offset_right = 368.0
@@ -33,6 +35,7 @@ bbcode_enabled = true
 text = "Test notice for testing purposes."
 
 [node name="NextEvent" type="Button" parent="."]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 456.0
 offset_right = 368.0

@@ -16,6 +16,9 @@ extends Node2D
 @onready var military: Node = $Military
 @onready var cooperation: Node = $Cooperation
 
+var statuses: Array = []
+var status_descriptions: Array = []
+
 #Statuses:
 #Nuclear Weapons
 var nuclear_state: bool = false
@@ -34,6 +37,10 @@ func _ready() -> void:
 
 func new_turn() -> void:
 	population += (economy.economy - 5) + (stability.stability - 5)
+	if nuclear_program_progression_active:
+		nuclear_program_progress += military.military
+	if nuclear_program_progress >= 10:
+		nuclear_state = true
 	
 func generate_starting_attribute_values() -> void:
 	economy.economy = randi_range(4, 6)
@@ -44,30 +51,47 @@ func generate_starting_attribute_values() -> void:
 	
 func modify_country_value(country: String, attribute: String, modifier: int) -> void:
 	if country == country_name:
-		if modifier > 0:
-			$Status.text += "[center][color=darkgreen]+"
-		elif modifier < 0:
-			$Status.text += "[center][color=firebrick]-"
-
 		match attribute:
 			"Economy":
 				economy.modify_economy(modifier)
+				if modifier > 0:
+					$Status.text += "[center][color=darkgreen]+"
+				elif modifier < 0:
+					$Status.text += "[center][color=firebrick]-"
 				$Status.text += "Economy"
 			"Stability":
 				stability.modify_stability(modifier)
+				if modifier > 0:
+					$Status.text += "[center][color=darkgreen]+"
+				elif modifier < 0:
+					$Status.text += "[center][color=firebrick]-"
 				$Status.text += "Stability"
 			"Military":
 				military.modify_military(modifier)
+				if modifier > 0:
+					$Status.text += "[center][color=darkgreen]+"
+				elif modifier < 0:
+					$Status.text += "[center][color=firebrick]-"
 				$Status.text += "Military"
 			"Cooperation":
 				cooperation.modify_cooperation(modifier)
+				if modifier > 0:
+					$Status.text += "[center][color=darkgreen]+"
+				elif modifier < 0:
+					$Status.text += "[center][color=firebrick]-"
 				$Status.text += "Cooperation"
 			"Population":
 				population += modifier
 				$Status.text += "Population"
-		$Status.text += "\n"
-		$Status.text.strip_edges()
-		move_status_label()
+			"NuclearProgress":
+				nuclear_program_progression_active = true
+			"Peace":
+				pass
+	elif country == "ALL":
+		pass
+	$Status.text += "\n"
+	$Status.text.strip_edges()
+	move_status_label()
 	#SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
 
 func _on_map_pressed() -> void:

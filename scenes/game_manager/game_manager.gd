@@ -13,4 +13,7 @@ func _ready() -> void:
 func new_turn() -> void:
 	turn += 1
 	influence += 1
+	if influence >= 5:
+		influence = 5
 	SignalHandler.emit_signal("turn_updated", turn)
+	SignalHandler.emit_signal("influence_updated", influence)

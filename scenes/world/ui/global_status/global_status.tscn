@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmylfp8sh4unx"]
+
+[ext_resource type="Script" path="res://scenes/world/ui/global_status/global_status.gd" id="1_plo62"]
+
+[node name="GlobalStatus" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 64.0
+script = ExtResource("1_plo62")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 64.0
+alignment = 1
+
+[node name="PeaceProcess" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="PeaceProcess" type="Label" parent="HBoxContainer/PeaceProcess"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Peace Progress"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/PeaceProcess"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "War Progress"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
