@@ -121,9 +121,9 @@ text = "S A T U R A"
 
 [node name="Status" parent="Countries/Country" index="6"]
 offset_left = 240.0
-offset_top = 120.0
+offset_top = 136.0
 offset_right = 368.0
-offset_bottom = 166.0
+offset_bottom = 182.0
 
 [node name="Country2" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Carateria"
@@ -142,10 +142,10 @@ theme_override_font_sizes/font_size = 20
 text = "C A R A T E R I A"
 
 [node name="Status" parent="Countries/Country2" index="6"]
-offset_left = 496.0
-offset_top = 192.0
-offset_right = 624.0
-offset_bottom = 238.0
+offset_left = 476.0
+offset_top = 200.0
+offset_right = 604.0
+offset_bottom = 246.0
 
 [node name="Country3" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Beorland"
@@ -164,9 +164,9 @@ text = "B E O R L A N D"
 
 [node name="Status" parent="Countries/Country3" index="6"]
 offset_left = 56.0
-offset_top = 80.0
+offset_top = 88.0
 offset_right = 184.0
-offset_bottom = 126.0
+offset_bottom = 134.0
 
 [node name="Country4" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Arcasia"
@@ -186,9 +186,9 @@ text = "A R C A S I A"
 
 [node name="Status" parent="Countries/Country4" index="6"]
 offset_left = 400.0
-offset_top = 120.0
+offset_top = 128.0
 offset_right = 528.0
-offset_bottom = 166.0
+offset_bottom = 174.0
 
 [node name="Country5" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Contana"
@@ -208,9 +208,9 @@ text = "C O N T A N A"
 
 [node name="Status" parent="Countries/Country5" index="6"]
 offset_left = 488.0
-offset_top = 280.0
+offset_top = 288.0
 offset_right = 616.0
-offset_bottom = 326.0
+offset_bottom = 334.0
 
 [node name="Country6" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Southern Isles"
@@ -231,9 +231,9 @@ I S L E S"
 
 [node name="Status" parent="Countries/Country6" index="6"]
 offset_left = 248.0
-offset_top = 320.0
+offset_top = 328.0
 offset_right = 376.0
-offset_bottom = 366.0
+offset_bottom = 374.0
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]
 

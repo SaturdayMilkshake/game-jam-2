@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdycehgp78nr0"]
+[gd_scene load_steps=9 format=3 uid="uid://cdycehgp78nr0"]
 
 [ext_resource type="PackedScene" uid="uid://bfbgcmcj60ckw" path="res://scenes/components/economy/economy.tscn" id="1_cjqcq"]
 [ext_resource type="Script" path="res://scenes/country/country.gd" id="1_e8aaw"]
 [ext_resource type="PackedScene" uid="uid://d0nswlnnobtxf" path="res://scenes/components/stability/stability.tscn" id="2_blcab"]
 [ext_resource type="PackedScene" uid="uid://bvfdoie2gtv8b" path="res://scenes/components/military/military.tscn" id="3_jvxxf"]
 [ext_resource type="PackedScene" uid="uid://bqpgu6a8kjg50" path="res://scenes/components/cooperation/cooperation.tscn" id="5_hfe5j"]
+[ext_resource type="Shader" path="res://scenes/country/country_map.gdshader" id="6_3d7ie"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyoy8"]
+resource_local_to_scene = true
+shader = ExtResource("6_3d7ie")
+shader_parameter/pulsing_active = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7vw4"]
 bg_color = Color(0.226707, 0.226708, 0.226707, 1)
@@ -27,6 +33,7 @@ script = ExtResource("1_e8aaw")
 
 [node name="Map" type="TextureButton" parent="."]
 self_modulate = Color(1, 1, 1, 0.643137)
+material = SubResource("ShaderMaterial_pyoy8")
 offset_right = 64.0
 offset_bottom = 64.0
 stretch_mode = 4

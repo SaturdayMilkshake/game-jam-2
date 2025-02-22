@@ -6,7 +6,7 @@ signal new_turn
 signal turn_updated(turn: int)
 
 @warning_ignore("unused_signal")
-signal country_selected(country: String, flag: String, population: int, economy: int, stability: int, military: int, cooperation: int)
+signal country_selected(country: String, flag: String, population: int, economy: int, stability: int, military: int, cooperation: int, statuses: String)
 @warning_ignore("unused_signal")
 signal update_country_info(country: String)
 @warning_ignore("unused_signal")
@@ -41,3 +41,5 @@ signal influence_used(country: String, attribute: String, add_mode: bool)
 #special event
 @warning_ignore("unused_signal")
 signal peace_process_started
+
+signal update_global_status(status: String, amount: int)

@@ -16,8 +16,10 @@ extends Node2D
 @onready var military: Node = $Military
 @onready var cooperation: Node = $Cooperation
 
-var statuses: Array = []
-var status_descriptions: Array = []
+var statuses: Array = ["[color=orange]Nuclear State[/color]"]
+var status_descriptions: Array = ["Will launch nukes as a last resort when Military reaches 0."]
+
+var status_text: String = ""
 
 #Statuses:
 #Nuclear Weapons
@@ -27,12 +29,11 @@ var nuclear_program_progress: int = 0
 
 var original_status_label_position: Vector2 = Vector2.ZERO
 
-var tween: Tween
-
 func _ready() -> void:
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
 	SignalHandler.connect("modify_country_value", Callable(self, "modify_country_value"))
 	SignalHandler.connect("update_country_info", Callable(self, "update_country_info"))
+	SignalHandler.connect("country_selected", Callable(self, "country_selected"))
 	$Map.texture_normal = load(map)
 	var bitmap: BitMap = BitMap.new()
 	var source_image: Image = load(map).get_image()
@@ -105,10 +106,14 @@ func modify_country_value(country: String, attribute: String, modifier: int) -> 
 			move_status_label()
 	elif country == "ALL":
 		pass
-	#SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
+	else:
+		pulse_country(false)
 
 func _on_map_pressed() -> void:
-	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
+	status_text = ""
+	check_statuses()
+	pulse_country(true)
+	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation, status_text)
 
 func _on_map_mouse_entered() -> void:
 	self.modulate = Color(1.0, 1.0, 1.0, 0.5)
@@ -117,17 +122,18 @@ func _on_map_mouse_exited() -> void:
 	self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func move_status_label() -> void:
+	var tween = create_tween()
 	if tween:
 		if tween.is_running():
 			tween.kill()
 		tween = create_tween()
 		$Status.visible = true
-		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.7).set_trans(Tween.TRANS_CIRC)
+		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.8).set_trans(Tween.TRANS_CIRC)
 		tween.tween_callback(reset_status_label_position)
 	else:
 		tween = create_tween()
 		$Status.visible = true
-		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.7).set_trans(Tween.TRANS_CIRC)
+		tween.tween_property($Status, "position", $Status.position + Vector2(0, -10), 0.8).set_trans(Tween.TRANS_CIRC)
 		tween.tween_callback(reset_status_label_position)
 
 func reset_status_label_position() -> void:
@@ -137,4 +143,23 @@ func reset_status_label_position() -> void:
 
 func update_country_info(country: String) -> void:
 	if country_name == country:
-		SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation)
+		status_text = ""
+		check_statuses()
+		pulse_country(true)
+		SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation, status_text)
+	else:
+		pulse_country(false)
+
+func check_statuses() -> void:
+	if nuclear_state:
+		status_text += statuses[0] + "\n"
+		status_text += status_descriptions[0]
+
+func pulse_country(status: bool) -> void:
+	$Map.material.set("shader_parameter/pulsing_active", status)
+
+func country_selected(country: String, _flag: String, _population: int, _economy: int, _stability: int, _military: int, _cooperation: int, _statuses: String) -> void:
+	if country_name == country:
+		pass
+	else:
+		pulse_country(false)

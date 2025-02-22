@@ -9,7 +9,7 @@ func _ready() -> void:
 	$InfluenceAttribute/SubtractAttribute.disabled = false
 	add_attribute_mode = true
 
-func country_selected(country: String, flag: String, population: int, economy: int, stability: int, military: int, cooperation: int) -> void:
+func country_selected(country: String, flag: String, population: int, economy: int, stability: int, military: int, cooperation: int, statuses: String) -> void:
 	self.visible = true
 	$CountryName.text = country
 	$Flag.texture = load(flag)
@@ -19,28 +19,47 @@ func country_selected(country: String, flag: String, population: int, economy: i
 	$Military.text = "Military: " + str(military)
 	$Cooperation.text = "Cooperation: " + str(cooperation)
 	color_labels(population, economy, stability, military, cooperation)
+	set_country_statuses(statuses)
 
 func color_labels(population: int, economy: int, stability: int, military: int, cooperation: int) -> void:
 	if economy <= 3:
 		$Economy.add_theme_color_override("font_color", Color.INDIAN_RED)
+		$Economy.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
+		$Economy.add_theme_color_override("font_hover_color", Color.INDIAN_RED)
 	elif economy >= 10:
 		$Economy.add_theme_color_override("font_color", Color.SEA_GREEN)
+		$Economy.add_theme_color_override("font_focus_color", Color.SEA_GREEN)
+		$Economy.add_theme_color_override("font_hover_color", Color.SEA_GREEN)
 	else:
 		$Economy.remove_theme_color_override("font_color")
+		$Economy.remove_theme_color_override("font_focus_color")
+		$Economy.remove_theme_color_override("font_hover_color")
 		
 	if stability <= 3:
 		$Stability.add_theme_color_override("font_color", Color.INDIAN_RED)
+		$Stability.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
+		$Stability.add_theme_color_override("font_hover_color", Color.INDIAN_RED)
 	elif stability >= 10:
 		$Stability.add_theme_color_override("font_color", Color.SEA_GREEN)
+		$Stability.add_theme_color_override("font_focus_color", Color.SEA_GREEN)
+		$Stability.add_theme_color_override("font_hover_color", Color.SEA_GREEN)
 	else:
 		$Stability.remove_theme_color_override("font_color")
+		$Stability.remove_theme_color_override("font_focus_color")
+		$Stability.remove_theme_color_override("font_hover_color")
 		
 	if military <= 3:
 		$Military.add_theme_color_override("font_color", Color.INDIAN_RED)
+		$Military.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
+		$Military.add_theme_color_override("font_hover_color", Color.INDIAN_RED)
 	elif military >= 10:
-		$Military.add_theme_color_override("font_color", Color.SEA_GREEN)
+		$Military.add_theme_color_override("font_color", Color.INDIAN_RED)
+		$Military.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
+		$Military.add_theme_color_override("font_hover_color", Color.INDIAN_RED)
 	else:
 		$Military.remove_theme_color_override("font_color")
+		$Military.remove_theme_color_override("font_focus_color")
+		$Military.remove_theme_color_override("font_hover_color")
 		
 	$Cooperation.visible = true
 	$InfluenceAttribute.visible = true
@@ -55,10 +74,22 @@ func color_labels(population: int, economy: int, stability: int, military: int, 
 		$Military.disabled = true
 	elif cooperation <= 3:
 		$Cooperation.add_theme_color_override("font_color", Color.INDIAN_RED)
+		$Cooperation.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
+		$Cooperation.add_theme_color_override("font_hover_color", Color.INDIAN_RED)
 	elif cooperation >= 10:
 		$Cooperation.add_theme_color_override("font_color", Color.SEA_GREEN)
+		$Cooperation.add_theme_color_override("font_focus_color", Color.SEA_GREEN)
+		$Cooperation.add_theme_color_override("font_hover_color", Color.SEA_GREEN)
 	else:
 		$Cooperation.remove_theme_color_override("font_color")
+		$Cooperation.remove_theme_color_override("font_focus_color")
+		$Cooperation.remove_theme_color_override("font_hover_color")
+		
+func set_country_statuses(status: String) -> void:
+	if status == "":
+		$StatusesList.text = "No active statuses."
+	else:
+		$StatusesList.text = status
 
 func _on_open_events_pressed() -> void:
 	SignalHandler.emit_signal("set_event_info_visibility", true)

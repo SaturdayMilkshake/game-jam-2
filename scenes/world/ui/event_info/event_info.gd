@@ -33,7 +33,7 @@ func game_started() -> void:
 	$Option2.visible = true
 	self.visible = true
 
-func country_selected(_country: String, _flag: String, _population: int, _economy: int, _stability: int, _military: int, _cooperation: int) -> void:
+func country_selected(_country: String, _flag: String, _population: int, _economy: int, _stability: int, _military: int, _cooperation: int, _statuses: String) -> void:
 	self.visible = false
 	
 func event_generated(event_description: String, country_1: String, country_2: String, option_1: String, option_2: String) -> void:

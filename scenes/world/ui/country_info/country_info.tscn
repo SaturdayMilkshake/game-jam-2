@@ -130,26 +130,26 @@ text = "Show Events"
 
 [node name="InfluenceAttribute" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 8.0
 offset_top = 136.0
-offset_right = 167.0
+offset_right = 159.0
 offset_bottom = 159.0
 text = "Influence Attribute:"
 
 [node name="AddAttribute" type="Button" parent="InfluenceAttribute"]
 layout_mode = 0
-offset_left = 176.0
+offset_left = 184.0
 offset_top = -4.0
-offset_right = 240.0
+offset_right = 248.0
 offset_bottom = 27.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tjfx6")
 text = "+"
 
 [node name="SubtractAttribute" type="Button" parent="InfluenceAttribute"]
 layout_mode = 0
-offset_left = 240.0
+offset_left = 248.0
 offset_top = -4.0
-offset_right = 304.0
+offset_right = 312.0
 offset_bottom = 27.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_umjqx")
 text = "-"
