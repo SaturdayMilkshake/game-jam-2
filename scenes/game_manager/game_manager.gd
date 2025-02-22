@@ -9,8 +9,10 @@ var critical_stability: int = 0
 var critical_military: int = 0
 var critical_cooperation: int = 0
 
+var full_cooperation: int = 0
+
 #Win / Lose Conditions
-var peace_process_active: bool = false
+var peace_process_active: bool = true
 var peace_progress: int = 0
 
 var war_progress_active: bool = false
@@ -25,6 +27,7 @@ func _ready() -> void:
 	SignalHandler.connect("no_military", Callable(self, "no_military"))
 	SignalHandler.connect("excess_military", Callable(self, "excess_military"))
 	SignalHandler.connect("no_cooperation", Callable(self, "no_cooperation"))
+	SignalHandler.connect("excess_cooperation", Callable(self, "excess_cooperation"))
 	call_deferred("start_game")
 
 func start_game() -> void:
@@ -36,6 +39,8 @@ func new_turn() -> void:
 	critical_stability = 0
 	critical_military = 0
 	critical_cooperation = 0
+	
+	full_cooperation = 0
 	
 	turn += 1
 	influence += 1
@@ -50,17 +55,20 @@ func check_critical_values() -> void:
 		pass
 	if critical_stability >= 4:
 		pass
-	if critical_military >= 4:
+	if critical_military >= 3:
 		war_progress_active = true
 	if critical_cooperation >= 5:
 		SignalHandler.emit_signal("game_over", "Broken Treaty")
 	
-	update_global_status("War", critical_military)
+	update_global_status("War")
 	update_global_status("Peace")
+	check_win_lose_conditions()
 	
 func check_win_lose_conditions() -> void:
 	if war_progress >= 100:
-		pass
+		SignalHandler.emit_signal("game_over", "War")
+	elif peace_progress >= 100:
+		SignalHandler.emit_signal("game_over", "Peace")
 	
 func influence_used(country: String, attribute: String, add_mode: bool) -> void:
 	if influence > 0:
@@ -72,10 +80,11 @@ func influence_used(country: String, attribute: String, add_mode: bool) -> void:
 		SignalHandler.emit_signal("influence_updated", influence)
 		SignalHandler.emit_signal("update_country_info", country)
 	
-func update_global_status(status: String = "", amount: int = 0) -> void:
+func update_global_status(status: String) -> void:
 	match status:
 		"Peace":
 			if peace_process_active:
+				peace_progress += full_cooperation
 				SignalHandler.emit_signal("update_global_status", "Peace", peace_progress)
 		"War":
 			if war_progress_active:
@@ -96,3 +105,6 @@ func excess_military() -> void:
 
 func no_cooperation() -> void:
 	critical_cooperation += 1
+
+func excess_cooperation() -> void:
+	full_cooperation += 1

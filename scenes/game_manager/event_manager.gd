@@ -9,6 +9,7 @@ var current_event: Array = []
 func _ready() -> void:
 	SignalHandler.connect("event_option_selected", Callable(self, "event_option_selected"))
 	SignalHandler.connect("new_event_requested", Callable(self, "new_event_requested"))
+	SignalHandler.connect("request_specific_event", Callable(self, "request_specific_event"))
 	initialize_events()
 
 func initialize_events() -> void:
@@ -47,3 +48,12 @@ func event_option_selected(option: int) -> void:
 
 func new_event_requested() -> void:
 	generate_new_event()
+
+func request_specific_event(event_id: int) -> void:
+	current_event = events[event_id]
+	if current_event[2] == "RANDOM":
+		current_event[2] = countries.pick_random()
+	if current_event[3] == "RANDOM":
+		current_event[3] = countries.pick_random()
+		while current_event[3] == current_event[2]:
+			current_event[3] = countries.pick_random()

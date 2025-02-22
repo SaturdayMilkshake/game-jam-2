@@ -13,7 +13,14 @@ func game_over(reason: String) -> void:
 			The future of the continent is uncertain."
 		"Nuclear Exchange":
 			$Description.text = "A nuclear weapon state has launched their nukes as a first strike strategy due to their severely weakened military.
-The continent is devastated, leaving millions of people dead."
+	The continent is devastated, leaving millions of people dead."
+		"Peace":
+			$Description.text = "Thanks to your efforts, the countries have decided to finally make peace!
+	The future of the continent looks bright.
+	Congratulations! Thank you for playing!"
+		"War":
+			$Description.text = "After years of unresolved issues, the continent has once again plunged into war.
+	Maybe you can try again?"
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 1)
 	SignalHandler.emit_signal("game_ended")

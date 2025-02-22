@@ -50,9 +50,13 @@ signal no_stability
 signal no_military
 signal no_cooperation
 signal excess_military
+signal excess_cooperation
 
 signal game_over(reason: String)
 signal game_ended
 
 #transition
 signal transition_requested(fade_in: bool, target: String)
+
+#events
+signal request_specific_event(event_id: int)

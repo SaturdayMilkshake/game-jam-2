@@ -51,11 +51,11 @@ func color_labels(population: int, economy: int, stability: int, military: int, 
 		$Stability.remove_theme_color_override("font_focus_color")
 		$Stability.remove_theme_color_override("font_hover_color")
 		
-	if military <= 3:
+	if military <= 2:
 		$Military.add_theme_color_override("font_color", Color.INDIAN_RED)
 		$Military.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
 		$Military.add_theme_color_override("font_hover_color", Color.INDIAN_RED)
-	elif military >= 10:
+	elif military >= 9:
 		$Military.add_theme_color_override("font_color", Color.INDIAN_RED)
 		$Military.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
 		$Military.add_theme_color_override("font_hover_color", Color.INDIAN_RED)

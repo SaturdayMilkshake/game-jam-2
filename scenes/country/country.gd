@@ -21,7 +21,7 @@ var statuses: Array = [
 	"[color=gray]Backed Out[/color]"
 ]
 var status_descriptions: Array = [
-	"Will launch nukes as a last resort when Military reaches 0.",
+	"Will launch nukes as a last resort when Military reaches 2.",
 	"This country's attributes can no longer be influenced."
 	]
 
@@ -71,14 +71,16 @@ func new_turn() -> void:
 		SignalHandler.emit_signal("no_economy")
 	if stability.stability <= 0:
 		SignalHandler.emit_signal("no_stability")
-	if military.military <= 0:
+	if military.military <= 2:
 		SignalHandler.emit_signal("no_military")
 		if nuclear_state:
 			SignalHandler.emit_signal("game_over", "Nuclear Exchange")
-	if military.military >= 10:
+	if military.military >= 9:
 		SignalHandler.emit_signal("excess_military")
 	if cooperation.cooperation <= 0:
 		SignalHandler.emit_signal("no_cooperation")
+	if cooperation.cooperation >= 10:
+		SignalHandler.emit_signal("excess_cooperation")
 	
 func generate_starting_attribute_values() -> void:
 	economy.economy = randi_range(4, 6)

@@ -64,7 +64,7 @@ func option_selected() -> void:
 	if current_event > events_this_turn:
 		$Option1.visible = false
 		$Option2.visible = true
-		$Option2.text = "New Turn"
+		$Option2.text = "New Year"
 		$Event.text = "Year Finished"
 		$Description.text = "You have completed all events this year. Please press New Year to continue."
 		SignalHandler.emit_signal("finished_all_events_this_turn")
