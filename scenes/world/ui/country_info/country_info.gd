@@ -1,11 +1,15 @@
 extends Control
 
+var add_attribute_mode: bool = true
+
 func _ready() -> void:
 	SignalHandler.connect("country_selected", Callable(self, "country_selected"))
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
+	$InfluenceAttribute/AddAttribute.disabled = true
+	$InfluenceAttribute/SubtractAttribute.disabled = false
+	add_attribute_mode = true
 
 func country_selected(country: String, flag: String, population: int, economy: int, stability: int, military: int, cooperation: int) -> void:
-	reset_label_color()
 	self.visible = true
 	$CountryName.text = country
 	$Flag.texture = load(flag)
@@ -16,35 +20,45 @@ func country_selected(country: String, flag: String, population: int, economy: i
 	$Cooperation.text = "Cooperation: " + str(cooperation)
 	color_labels(population, economy, stability, military, cooperation)
 
-func reset_label_color() -> void:
-	$Economy.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	$Stability.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	$Military.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	$Cooperation.modulate = Color(1.0, 1.0, 1.0, 1.0)
-
 func color_labels(population: int, economy: int, stability: int, military: int, cooperation: int) -> void:
 	if economy <= 3:
-		$Economy.modulate = Color.INDIAN_RED
+		$Economy.add_theme_color_override("font_color", Color.INDIAN_RED)
 	elif economy >= 10:
-		$Economy.modulate = Color.SEA_GREEN
+		$Economy.add_theme_color_override("font_color", Color.SEA_GREEN)
+	else:
+		$Economy.remove_theme_color_override("font_color")
 		
 	if stability <= 3:
-		$Stability.modulate = Color.INDIAN_RED
+		$Stability.add_theme_color_override("font_color", Color.INDIAN_RED)
 	elif stability >= 10:
-		$Stability.modulate = Color.SEA_GREEN
+		$Stability.add_theme_color_override("font_color", Color.SEA_GREEN)
+	else:
+		$Stability.remove_theme_color_override("font_color")
 		
 	if military <= 3:
-		$Military.modulate = Color.INDIAN_RED
+		$Military.add_theme_color_override("font_color", Color.INDIAN_RED)
 	elif military >= 10:
-		$Military.modulate = Color.INDIAN_RED
+		$Military.add_theme_color_override("font_color", Color.SEA_GREEN)
+	else:
+		$Military.remove_theme_color_override("font_color")
 		
 	$Cooperation.visible = true
+	$InfluenceAttribute.visible = true
+	$Economy.disabled = false
+	$Stability.disabled = false
+	$Military.disabled = false
 	if cooperation <= 0:
 		$Cooperation.visible = false
+		$InfluenceAttribute.visible = false
+		$Economy.disabled = true
+		$Stability.disabled = true
+		$Military.disabled = true
 	elif cooperation <= 3:
-		$Cooperation.modulate = Color.INDIAN_RED
+		$Cooperation.add_theme_color_override("font_color", Color.INDIAN_RED)
 	elif cooperation >= 10:
-		$Cooperation.modulate = Color.SEA_GREEN
+		$Cooperation.add_theme_color_override("font_color", Color.SEA_GREEN)
+	else:
+		$Cooperation.remove_theme_color_override("font_color")
 
 func _on_open_events_pressed() -> void:
 	SignalHandler.emit_signal("set_event_info_visibility", true)
@@ -52,3 +66,25 @@ func _on_open_events_pressed() -> void:
 
 func new_turn() -> void:
 	self.visible = false
+
+func _on_add_attribute_pressed() -> void:
+	$InfluenceAttribute/AddAttribute.disabled = true
+	$InfluenceAttribute/SubtractAttribute.disabled = false
+	add_attribute_mode = true
+
+func _on_subtract_attribute_pressed() -> void:
+	$InfluenceAttribute/AddAttribute.disabled = false
+	$InfluenceAttribute/SubtractAttribute.disabled = true
+	add_attribute_mode = false
+
+func _on_economy_pressed() -> void:
+	SignalHandler.emit_signal("influence_used", $CountryName.text, "Economy", add_attribute_mode)
+
+func _on_stability_pressed() -> void:
+	SignalHandler.emit_signal("influence_used", $CountryName.text, "Stability", add_attribute_mode)
+
+func _on_military_pressed() -> void:
+	SignalHandler.emit_signal("influence_used", $CountryName.text, "Military", add_attribute_mode)
+
+func _on_cooperation_pressed() -> void:
+	SignalHandler.emit_signal("influence_used", $CountryName.text, "Cooperation", add_attribute_mode)

@@ -1,9 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs357xfrieidy"]
+[gd_scene load_steps=10 format=3 uid="uid://bs357xfrieidy"]
 
 [ext_resource type="Script" path="res://scenes/world/ui/country_info/country_info.gd" id="1_rn7no"]
 [ext_resource type="Texture2D" uid="uid://ccx85m0m64euw" path="res://assets/flags/satura.svg" id="2_pgu2d"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mytyi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hhpro"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1i573"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cd3i4"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ut37"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjfx6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_umjqx"]
 
 [node name="CountryInfo" type="Control"]
 layout_mode = 3
@@ -42,45 +54,49 @@ theme_override_font_sizes/font_size = 18
 text = "Pop.: 50"
 vertical_alignment = 1
 
-[node name="Economy" type="Label" parent="."]
+[node name="Economy" type="Button" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 144.0
-offset_right = 176.0
-offset_bottom = 178.0
+offset_left = 8.0
+offset_top = 168.0
+offset_right = 192.0
+offset_bottom = 210.0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mytyi")
 text = "Economy: 5"
-vertical_alignment = 1
+alignment = 0
 
-[node name="Stability" type="Label" parent="."]
+[node name="Stability" type="Button" parent="."]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 8.0
 offset_top = 208.0
-offset_right = 176.0
-offset_bottom = 242.0
+offset_right = 192.0
+offset_bottom = 250.0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hhpro")
 text = "Stability: 5"
-vertical_alignment = 1
+alignment = 0
 
-[node name="Military" type="Label" parent="."]
+[node name="Military" type="Button" parent="."]
 layout_mode = 0
 offset_left = 192.0
-offset_top = 144.0
-offset_right = 352.0
-offset_bottom = 178.0
+offset_top = 168.0
+offset_right = 376.0
+offset_bottom = 210.0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1i573")
 text = "Military: 5"
-vertical_alignment = 1
+alignment = 0
 
-[node name="Cooperation" type="Label" parent="."]
+[node name="Cooperation" type="Button" parent="."]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 208.0
-offset_right = 368.0
-offset_bottom = 242.0
+offset_right = 376.0
+offset_bottom = 250.0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cd3i4")
 text = "Cooperation: 5"
-vertical_alignment = 1
+alignment = 0
 
 [node name="Statuses" type="Label" parent="."]
 layout_mode = 0
@@ -112,4 +128,36 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3ut37")
 text = "Show Events"
 
+[node name="InfluenceAttribute" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 136.0
+offset_right = 167.0
+offset_bottom = 159.0
+text = "Influence Attribute:"
+
+[node name="AddAttribute" type="Button" parent="InfluenceAttribute"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = -4.0
+offset_right = 240.0
+offset_bottom = 27.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tjfx6")
+text = "+"
+
+[node name="SubtractAttribute" type="Button" parent="InfluenceAttribute"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = -4.0
+offset_right = 304.0
+offset_bottom = 27.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_umjqx")
+text = "-"
+
+[connection signal="pressed" from="Economy" to="." method="_on_economy_pressed"]
+[connection signal="pressed" from="Stability" to="." method="_on_stability_pressed"]
+[connection signal="pressed" from="Military" to="." method="_on_military_pressed"]
+[connection signal="pressed" from="Cooperation" to="." method="_on_cooperation_pressed"]
 [connection signal="pressed" from="OpenEvents" to="." method="_on_open_events_pressed"]
+[connection signal="pressed" from="InfluenceAttribute/AddAttribute" to="." method="_on_add_attribute_pressed"]
+[connection signal="pressed" from="InfluenceAttribute/SubtractAttribute" to="." method="_on_subtract_attribute_pressed"]

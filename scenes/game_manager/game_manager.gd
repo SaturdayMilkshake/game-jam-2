@@ -9,6 +9,12 @@ var peace_progress: int = 0
 
 func _ready() -> void:
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
+	SignalHandler.connect("influence_used", Callable(self, "influence_used"))
+	call_deferred("start_game")
+
+func start_game() -> void:
+	SignalHandler.emit_signal("game_started")
+	SignalHandler.emit_signal("turn_updated", turn)
 
 func new_turn() -> void:
 	turn += 1
@@ -17,3 +23,14 @@ func new_turn() -> void:
 		influence = 5
 	SignalHandler.emit_signal("turn_updated", turn)
 	SignalHandler.emit_signal("influence_updated", influence)
+	
+func influence_used(country: String, attribute: String, add_mode: bool) -> void:
+	if influence > 0:
+		influence -= 1
+		if add_mode:
+			SignalHandler.emit_signal("modify_country_value", country, attribute, 1)
+		else:
+			SignalHandler.emit_signal("modify_country_value", country, attribute, -1)
+		SignalHandler.emit_signal("influence_updated", influence)
+		SignalHandler.emit_signal("update_country_info", country)
+	

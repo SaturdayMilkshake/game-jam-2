@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdycehgp78nr0"]
+[gd_scene load_steps=7 format=3 uid="uid://cdycehgp78nr0"]
 
 [ext_resource type="PackedScene" uid="uid://bfbgcmcj60ckw" path="res://scenes/components/economy/economy.tscn" id="1_cjqcq"]
 [ext_resource type="Script" path="res://scenes/country/country.gd" id="1_e8aaw"]
 [ext_resource type="PackedScene" uid="uid://d0nswlnnobtxf" path="res://scenes/components/stability/stability.tscn" id="2_blcab"]
 [ext_resource type="PackedScene" uid="uid://bvfdoie2gtv8b" path="res://scenes/components/military/military.tscn" id="3_jvxxf"]
 [ext_resource type="PackedScene" uid="uid://bqpgu6a8kjg50" path="res://scenes/components/cooperation/cooperation.tscn" id="5_hfe5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7vw4"]
+bg_color = Color(0.226707, 0.226708, 0.226707, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="Country" type="Node2D"]
 script = ExtResource("1_e8aaw")
@@ -23,19 +34,19 @@ offset_right = 64.0
 offset_bottom = 64.0
 stretch_mode = 4
 
-[node name="Status" type="RichTextLabel" parent="."]
-offset_right = 192.0
-offset_bottom = 64.0
-mouse_filter = 2
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-
 [node name="CountryName" type="Label" parent="."]
 offset_right = 128.0
 offset_bottom = 64.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Status" type="RichTextLabel" parent="."]
+offset_right = 192.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7vw4")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 
 [connection signal="mouse_entered" from="Map" to="." method="_on_map_mouse_entered"]
 [connection signal="mouse_exited" from="Map" to="." method="_on_map_mouse_exited"]

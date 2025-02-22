@@ -9,6 +9,8 @@ func _process(delta: float) -> void:
 func influence_updated(influence: int) -> void:
 	if influence >= 5:
 		self.modulate = Color.DODGER_BLUE
+	elif influence <= 0:
+		self.modulate = Color.INDIAN_RED
 	else:
 		self.modulate = Color.WHITE
 	$Influence.text = "Influence: " + str(influence)

@@ -14,5 +14,5 @@ layout_mode = 0
 offset_right = 112.0
 offset_bottom = 48.0
 theme_override_font_sizes/font_size = 18
-text = "Influence: 0"
+text = "Influence: 1"
 vertical_alignment = 1

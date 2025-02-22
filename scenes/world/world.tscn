@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbvkf5dobplar"]
+[gd_scene load_steps=14 format=3 uid="uid://cbvkf5dobplar"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_il811"]
 [ext_resource type="PackedScene" uid="uid://cdycehgp78nr0" path="res://scenes/country/country.tscn" id="1_wohfb"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://c7tlb7n1slofl" path="res://assets/flags/map_nobg.svg" id="6_mxnvk"]
 [ext_resource type="PackedScene" uid="uid://cmylfp8sh4unx" path="res://scenes/world/ui/global_status/global_status.tscn" id="10_modfb"]
 [ext_resource type="PackedScene" uid="uid://ba61uj6qpgffj" path="res://scenes/world/ui/influence/influence.tscn" id="11_4g70f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1cuy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baddg"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_il811")
@@ -57,6 +61,7 @@ offset_left = 1096.0
 offset_top = 8.0
 offset_right = 1144.0
 offset_bottom = 56.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g1cuy")
 text = "T"
 metadata/_edit_lock_ = true
 
@@ -65,6 +70,7 @@ offset_left = 1032.0
 offset_top = 8.0
 offset_right = 1080.0
 offset_bottom = 56.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_baddg")
 metadata/_edit_lock_ = true
 
 [node name="TurnButton" parent="." instance=ExtResource("4_x1ahm")]
@@ -83,6 +89,16 @@ offset_bottom = 576.0
 texture = ExtResource("6_mxnvk")
 metadata/_edit_lock_ = true
 
+[node name="GlobalStatus" parent="." instance=ExtResource("10_modfb")]
+offset_left = 504.0
+offset_right = 1016.0
+
+[node name="Influence" parent="." instance=ExtResource("11_4g70f")]
+offset_left = 256.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 56.0
+
 [node name="Countries" type="Node2D" parent="."]
 position = Vector2(384, 64)
 
@@ -92,13 +108,7 @@ flag = "res://assets/flags/satura.svg"
 map = "res://assets/flags/satura_map.svg"
 mask = "res://assets/flags/satura_mask.svg"
 
-[node name="Status" parent="Countries/Country" index="5"]
-offset_left = 240.0
-offset_top = 160.0
-offset_right = 368.0
-offset_bottom = 206.0
-
-[node name="CountryName" parent="Countries/Country" index="6"]
+[node name="CountryName" parent="Countries/Country" index="5"]
 offset_left = 176.0
 offset_top = 160.0
 offset_right = 422.0
@@ -109,6 +119,12 @@ theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 28
 text = "S A T U R A"
 
+[node name="Status" parent="Countries/Country" index="6"]
+offset_left = 240.0
+offset_top = 120.0
+offset_right = 368.0
+offset_bottom = 166.0
+
 [node name="Country2" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Carateria"
 flag = "res://assets/flags/carateria.svg"
@@ -116,13 +132,7 @@ map = "res://assets/flags/carateria_map.svg"
 mask = "res://assets/flags/carateria_mask.svg"
 metadata/_edit_lock_ = true
 
-[node name="Status" parent="Countries/Country2" index="5"]
-offset_left = 520.0
-offset_top = 208.0
-offset_right = 648.0
-offset_bottom = 254.0
-
-[node name="CountryName" parent="Countries/Country2" index="6"]
+[node name="CountryName" parent="Countries/Country2" index="5"]
 offset_left = 464.0
 offset_top = 224.0
 offset_right = 613.0
@@ -131,6 +141,12 @@ theme_override_colors/font_color = Color(0.243137, 0.243137, 0.243137, 1)
 theme_override_font_sizes/font_size = 20
 text = "C A R A T E R I A"
 
+[node name="Status" parent="Countries/Country2" index="6"]
+offset_left = 496.0
+offset_top = 192.0
+offset_right = 624.0
+offset_bottom = 238.0
+
 [node name="Country3" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Beorland"
 flag = "res://assets/flags/bingus1.svg"
@@ -138,19 +154,19 @@ map = "res://assets/flags/green_map.svg"
 mask = "res://assets/flags/green_mask.svg"
 metadata/_edit_lock_ = true
 
-[node name="Status" parent="Countries/Country3" index="5"]
-offset_left = 56.0
-offset_top = 128.0
-offset_right = 184.0
-offset_bottom = 174.0
-
-[node name="CountryName" parent="Countries/Country3" index="6"]
+[node name="CountryName" parent="Countries/Country3" index="5"]
 offset_left = 56.0
 offset_top = 112.0
 offset_right = 184.0
 offset_bottom = 176.0
 theme_override_colors/font_color = Color(0.243137, 0.243137, 0.243137, 1)
 text = "B E O R L A N D"
+
+[node name="Status" parent="Countries/Country3" index="6"]
+offset_left = 56.0
+offset_top = 80.0
+offset_right = 184.0
+offset_bottom = 126.0
 
 [node name="Country4" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Arcasia"
@@ -159,13 +175,7 @@ map = "res://assets/flags/orange_map.svg"
 mask = "res://assets/flags/orange_mask.svg"
 metadata/_edit_lock_ = true
 
-[node name="Status" parent="Countries/Country4" index="5"]
-offset_left = 392.0
-offset_top = 160.0
-offset_right = 520.0
-offset_bottom = 206.0
-
-[node name="CountryName" parent="Countries/Country4" index="6"]
+[node name="CountryName" parent="Countries/Country4" index="5"]
 offset_left = 400.0
 offset_top = 152.0
 offset_right = 536.0
@@ -174,6 +184,12 @@ theme_override_colors/font_color = Color(0.243137, 0.243137, 0.243137, 1)
 theme_override_font_sizes/font_size = 22
 text = "A R C A S I A"
 
+[node name="Status" parent="Countries/Country4" index="6"]
+offset_left = 400.0
+offset_top = 120.0
+offset_right = 528.0
+offset_bottom = 166.0
+
 [node name="Country5" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Contana"
 flag = "res://assets/flags/bossman1.svg"
@@ -181,13 +197,7 @@ map = "res://assets/flags/gray_map.svg"
 mask = "res://assets/flags/gray_mask.svg"
 metadata/_edit_lock_ = true
 
-[node name="Status" parent="Countries/Country5" index="5"]
-offset_left = 520.0
-offset_top = 328.0
-offset_right = 648.0
-offset_bottom = 374.0
-
-[node name="CountryName" parent="Countries/Country5" index="6"]
+[node name="CountryName" parent="Countries/Country5" index="5"]
 offset_left = 480.0
 offset_top = 312.0
 offset_right = 634.0
@@ -196,6 +206,12 @@ theme_override_colors/font_color = Color(0.243137, 0.243137, 0.243137, 1)
 theme_override_font_sizes/font_size = 24
 text = "C O N T A N A"
 
+[node name="Status" parent="Countries/Country5" index="6"]
+offset_left = 488.0
+offset_top = 280.0
+offset_right = 616.0
+offset_bottom = 326.0
+
 [node name="Country6" parent="Countries" instance=ExtResource("1_wohfb")]
 country_name = "Southern Isles"
 flag = "res://assets/flags/bingus1(1).svg"
@@ -203,13 +219,7 @@ map = "res://assets/flags/yellow_map.svg"
 mask = "res://assets/flags/yellow_mask.svg"
 metadata/_edit_lock_ = true
 
-[node name="Status" parent="Countries/Country6" index="5"]
-offset_left = 256.0
-offset_top = 376.0
-offset_right = 384.0
-offset_bottom = 422.0
-
-[node name="CountryName" parent="Countries/Country6" index="6"]
+[node name="CountryName" parent="Countries/Country6" index="5"]
 offset_left = 248.0
 offset_top = 368.0
 offset_right = 378.0
@@ -219,15 +229,11 @@ theme_override_font_sizes/font_size = 18
 text = "S O U T H E R N
 I S L E S"
 
-[node name="GlobalStatus" parent="." instance=ExtResource("10_modfb")]
-offset_left = 504.0
-offset_right = 1016.0
-
-[node name="Influence" parent="." instance=ExtResource("11_4g70f")]
-offset_left = 256.0
-offset_top = 8.0
-offset_right = 384.0
-offset_bottom = 56.0
+[node name="Status" parent="Countries/Country6" index="6"]
+offset_left = 248.0
+offset_top = 320.0
+offset_right = 376.0
+offset_bottom = 366.0
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]
 

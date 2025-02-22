@@ -28,6 +28,7 @@ func _on_option_2_pressed() -> void:
 	
 func game_started() -> void:
 	SignalHandler.emit_signal("new_event_requested")
+	$Event.text = "Event " + str(current_event) + " / " + str(events_this_turn)
 	$Option1.visible = true
 	$Option2.visible = true
 	self.visible = true
