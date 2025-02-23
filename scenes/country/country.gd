@@ -56,7 +56,6 @@ func _ready() -> void:
 	$Status.visible = false
 
 func new_turn() -> void:
-	population += (economy.economy - 5) + (stability.stability - 5)
 	if nuclear_program_progression_active:
 		nuclear_program_progress += military.military
 	if nuclear_program_progress >= 50 && !nuclear_state:
@@ -67,8 +66,16 @@ func new_turn() -> void:
 		$Status.text += "[center][color=white]Backed Out[/color]"
 		
 	#attributes
-	if economy.economy <= 0:
+	if economy.economy <= 2:
 		SignalHandler.emit_signal("no_economy")
+		var affected_attribute: int = randi_range(1, 3)
+		match affected_attribute:
+			1:
+				modify_country_value(country_name, "Stability", -1)
+			2:
+				modify_country_value(country_name, "Military", -1)
+			3:
+				modify_country_value(country_name, "Cooperation", -1)
 	if economy.economy >= 10:
 		SignalHandler.emit_signal("excess_economy")
 	if stability.stability <= 3:

@@ -9,6 +9,7 @@ func _ready() -> void:
 	SignalHandler.connect("country_selected", Callable(self, "country_selected"))
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
 	SignalHandler.connect("game_ended", Callable(self, "game_ended"))
+	SignalHandler.connect("set_country_info_tutorial_status", Callable(self, "set_country_info_tutorial_status"))
 	$InfluenceAttribute/AddAttribute.disabled = true
 	$InfluenceAttribute/SubtractAttribute.disabled = false
 	add_attribute_mode = true
@@ -17,6 +18,8 @@ func country_selected(country: String, flag: String, population: int, economy: i
 	if game_active:
 		if in_tutorial:
 			$OpenEvents.text = "Back to Tutorial"
+		else:
+			$OpenEvents.text = "Show Events"
 		self.visible = true
 		$CountryName.text = country
 		$Flag.texture = load(flag)
@@ -29,7 +32,7 @@ func country_selected(country: String, flag: String, population: int, economy: i
 		set_country_statuses(statuses)
 
 func color_labels(population: int, economy: int, stability: int, military: int, cooperation: int) -> void:
-	if economy <= 3:
+	if economy <= 2:
 		$Economy.add_theme_color_override("font_color", Color.INDIAN_RED)
 		$Economy.add_theme_color_override("font_focus_color", Color.INDIAN_RED)
 		$Economy.add_theme_color_override("font_hover_color", Color.INDIAN_RED)
@@ -100,7 +103,7 @@ func set_country_statuses(status: String) -> void:
 
 func _on_open_events_pressed() -> void:
 	if in_tutorial:
-		SignalHandler.emit_signal("display_notice_info")
+		SignalHandler.emit_signal("display_notice_info", true, "Next")
 		self.visible = false
 	else:
 		SignalHandler.emit_signal("set_event_info_visibility", true)
@@ -120,24 +123,32 @@ func _on_subtract_attribute_pressed() -> void:
 	add_attribute_mode = false
 
 func _on_economy_pressed() -> void:
+	if in_tutorial:
+		SignalHandler.emit_signal("display_notice_info", false, "Economy")
 	if ((int($Economy.text) <= 10 && int($Economy.text) > 0) && !add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Economy", add_attribute_mode)
 	elif ((int($Economy.text) < 10 && int($Economy.text) >= 0) && add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Economy", add_attribute_mode)
 
 func _on_stability_pressed() -> void:
+	if in_tutorial:
+		SignalHandler.emit_signal("display_notice_info", false, "Stability")
 	if ((int($Stability.text) <= 10 && int($Stability.text) > 0) && !add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Stability", add_attribute_mode)
 	elif ((int($Stability.text) < 10 && int($Stability.text) >= 0) && add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Stability", add_attribute_mode)
 
 func _on_military_pressed() -> void:
+	if in_tutorial:
+		SignalHandler.emit_signal("display_notice_info", false, "Military")
 	if ((int($Military.text) <= 10 && int($Military.text) > 0) && !add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Military", add_attribute_mode)
 	elif ((int($Military.text) < 10 && int($Military.text) >= 0) && add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Military", add_attribute_mode)
 
 func _on_cooperation_pressed() -> void:
+	if in_tutorial:
+		SignalHandler.emit_signal("display_notice_info", false, "Cooperation")
 	if ((int($Cooperation.text) <= 10 && int($Cooperation.text) > 0) && !add_attribute_mode):
 		SignalHandler.emit_signal("influence_used", $CountryName.text, "Cooperation", add_attribute_mode)
 	elif ((int($Cooperation.text) < 10 && int($Cooperation.text) >= 0) && add_attribute_mode):
@@ -146,3 +157,6 @@ func _on_cooperation_pressed() -> void:
 func game_ended() -> void:
 	game_active = false
 	self.visible = false
+
+func set_country_info_tutorial_status(status: bool) -> void:
+	in_tutorial = status 

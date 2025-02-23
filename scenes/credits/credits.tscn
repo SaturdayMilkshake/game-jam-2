@@ -27,6 +27,7 @@ offset_bottom = 408.0
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CreditsContainer"]
+layout_mode = 0
 offset_left = -384.0
 offset_top = -120.0
 offset_right = 768.0
@@ -35,6 +36,7 @@ color = Color(0.356863, 0.996078, 0.894118, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CreditsContainer"]
 modulate = Color(1, 1, 1, 0.372549)
+layout_mode = 0
 offset_left = -384.0
 offset_top = -120.0
 offset_right = 768.0
@@ -141,6 +143,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wjyye")
 text = "Back To Title"
 
 [node name="Transition" parent="." instance=ExtResource("2_8dgji")]
-visible = false
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]

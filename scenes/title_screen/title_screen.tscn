@@ -85,7 +85,6 @@ text = "Credits
 "
 
 [node name="Transition" parent="." instance=ExtResource("2_70o7c")]
-visible = false
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]

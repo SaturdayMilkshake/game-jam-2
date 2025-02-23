@@ -7,6 +7,8 @@ var events_this_turn: int = 1
 
 var total_turns: int = 0
 
+@export var in_tutorial: bool = false
+
 func _ready() -> void:
 	SignalHandler.connect("country_selected", Callable(self, "country_selected"))
 	SignalHandler.connect("event_generated", Callable(self, "event_generated"))
@@ -44,12 +46,14 @@ func country_selected(_country: String, _flag: String, _population: int, _econom
 func event_generated(event_description: String, country_1: String, country_2: String, option_1: String, option_2: String) -> void:
 	var new_text: String = event_description.replace("COUNTRY1", country_1).replace("COUNTRY2", country_2)
 	#wtf but also this is a game jam so who cares
-	var new_colored_text: String = new_text.replace("Satura", "[color=crimson]Satura[/color]").replace("Carateria", "[color=cyan]Carateria[/color]").replace("Beorland", "[color=lime]Beorland[/color]").replace("Leipand", "[color=orange]Leipand[/color]").replace("Lumeburg", "[color=lightslategray]Lumeburg[/color]").replace("Southern Isles", "[color=yellow]Southern Isles[/color]")
+	var new_colored_text: String = new_text.replace("Satura", "[color=crimson]Satura[/color]").replace("Carateria", "[color=cyan]Carateria[/color]").replace("Canorland", "[color=lime]Canorland[/color]").replace("Leipand", "[color=orange]Leipand[/color]").replace("Lumeburg", "[color=lightslategray]Lumeburg[/color]").replace("Southern Isles", "[color=yellow]Southern Isles[/color]")
 	$Description.text = new_colored_text
 	var new_option_1: String = option_1.replace("COUNTRY1", country_1).replace("COUNTRY2", country_2)
 	$Option1.text = new_option_1
 	var new_option_2: String = option_2.replace("COUNTRY1", country_1).replace("COUNTRY2", country_2)
 	$Option2.text = new_option_2
+	$Option1.visible = true
+	$Option2.visible = true
 	self.visible = true
 
 func new_turn() -> void:
@@ -64,16 +68,20 @@ func new_turn() -> void:
 
 func option_selected() -> void:
 	current_event += 1
-	if current_event > events_this_turn:
-		$Option1.visible = false
-		$Option2.visible = true
-		$Option2.text = "New Year"
-		$Event.text = "Year Finished"
-		$Description.text = "You have completed all events this year. Please press New Year to continue."
-		SignalHandler.emit_signal("finished_all_events_this_turn")
+	if !in_tutorial:
+		if current_event > events_this_turn:
+			$Option1.visible = false
+			$Option2.visible = true
+			$Option2.text = "New Year"
+			$Event.text = "Year Finished"
+			$Description.text = "You have completed all events this year. Please press New Year to continue."
+			SignalHandler.emit_signal("finished_all_events_this_turn")
+		else:
+			$Event.text = "Event " + str(current_event) + " / " + str(events_this_turn)
+			SignalHandler.emit_signal("new_event_requested")
 	else:
-		$Event.text = "Event " + str(current_event) + " / " + str(events_this_turn)
-		SignalHandler.emit_signal("new_event_requested")
+		SignalHandler.emit_signal("display_notice_info", true, "Event")
+		self.visible = false
 
 func set_event_info_visibility(status: bool) -> void:
 	self.visible = status

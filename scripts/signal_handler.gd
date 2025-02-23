@@ -56,6 +56,8 @@ signal excess_cooperation
 signal game_over(reason: String)
 signal game_ended
 
+signal add_influence(amount: int)
+
 #transition
 signal transition_requested(fade_in: bool, target: String)
 
@@ -63,4 +65,5 @@ signal transition_requested(fade_in: bool, target: String)
 signal request_specific_event(event_id: int)
 
 #tutorial
-signal display_notice_info
+signal display_notice_info(display_immediately: bool, source: String)
+signal set_country_info_tutorial_status(status: bool)

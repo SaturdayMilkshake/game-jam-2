@@ -77,11 +77,13 @@ visible = false
 in_tutorial = true
 
 [node name="EventInfo" parent="LeftPanel" instance=ExtResource("4_v4l2u")]
+in_tutorial = true
 
 [node name="NoticeInfo" parent="LeftPanel" instance=ExtResource("5_7b4oa")]
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
+in_tutorial = true
 
 [node name="WorldBackground" type="ColorRect" parent="."]
 offset_left = 384.0
@@ -189,7 +191,7 @@ offset_right = 604.0
 offset_bottom = 246.0
 
 [node name="Country3" parent="Countries" instance=ExtResource("11_gv1q0")]
-country_name = "Beorland"
+country_name = "Canorland"
 flag = "res://assets/flags/bingus1.svg"
 map = "res://assets/flags/green_map.svg"
 mask = "res://assets/flags/green_mask.svg"
@@ -204,7 +206,7 @@ offset_top = 112.0
 offset_right = 184.0
 offset_bottom = 176.0
 theme_override_colors/font_color = Color(0.243137, 0.243137, 0.243137, 1)
-text = "B E O R L A N D"
+text = "C A N O R L A N D"
 
 [node name="Status" parent="Countries/Country3" index="6"]
 offset_left = 56.0

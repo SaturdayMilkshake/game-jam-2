@@ -32,8 +32,16 @@ func _ready() -> void:
 	SignalHandler.connect("excess_military", Callable(self, "excess_military"))
 	SignalHandler.connect("no_cooperation", Callable(self, "no_cooperation"))
 	SignalHandler.connect("excess_cooperation", Callable(self, "excess_cooperation"))
+	
+	SignalHandler.connect("add_influence", Callable(self, "add_influence"))
 	if !in_tutorial:
 		call_deferred("start_game")
+	else:
+		influence = 0
+		call_deferred("tutorial_late_influence")
+		
+func tutorial_late_influence() -> void:
+	SignalHandler.emit_signal("influence_updated", influence)
 
 func start_game() -> void:
 	SignalHandler.emit_signal("game_started")
@@ -119,3 +127,7 @@ func excess_cooperation() -> void:
 
 func excess_economy() -> void:
 	high_economy += 1
+
+func add_influence(amount: int) -> void:
+	influence += amount
+	SignalHandler.emit_signal("influence_updated", amount)
