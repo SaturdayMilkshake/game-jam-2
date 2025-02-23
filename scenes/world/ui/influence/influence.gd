@@ -2,7 +2,6 @@ extends Control
 
 func _ready() -> void:
 	SignalHandler.connect("influence_updated", Callable(self, "influence_updated"))
-	self.modulate = Color.INDIAN_RED
 
 func _process(delta: float) -> void:
 	pass

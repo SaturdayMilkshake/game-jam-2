@@ -15,7 +15,8 @@ func game_over(reason: String) -> void:
 			$Description.text = "A nuclear weapon state has launched their nukes as a first strike strategy due to their severely weakened military.
 	The continent is devastated, leaving millions of people dead."
 		"Peace":
-			$Description.text = "Thanks to your efforts, the countries have decided to finally make peace!
+			$GameOver.text = "You Win!"
+			$Description.text = "Thanks to your efforts, the countries have decided to make peace!
 	The future of the continent looks bright.
 	Congratulations! Thank you for playing!"
 		"War":

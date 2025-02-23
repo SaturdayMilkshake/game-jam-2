@@ -3,7 +3,9 @@ extends Control
 @onready var description: Node = $Description
 
 var current_event: int = 1
-var events_this_turn: int = 3
+var events_this_turn: int = 1
+
+var total_turns: int = 0
 
 func _ready() -> void:
 	SignalHandler.connect("country_selected", Callable(self, "country_selected"))
@@ -51,10 +53,11 @@ func event_generated(event_description: String, country_1: String, country_2: St
 	self.visible = true
 
 func new_turn() -> void:
+	total_turns += 1
 	self.visible = true
 	$Option1.visible = true
 	$Option2.visible = true
-	events_this_turn = randi_range(1, 3)
+	events_this_turn = min(7, randi_range(1, 2 + (total_turns / 10)))
 	current_event = 1
 	$Event.text = "Event " + str(current_event) + " / " + str(events_this_turn)
 	SignalHandler.emit_signal("new_event_requested")

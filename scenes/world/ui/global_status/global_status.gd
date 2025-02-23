@@ -2,6 +2,8 @@ extends Control
 
 func _ready() -> void:
 	SignalHandler.connect("update_global_status", Callable(self, "update_global_status"))
+	$HBoxContainer/WarProgress/ProgressBar.value = 0
+	$HBoxContainer/PeaceProcess/ProgressBar.value = 0
 
 func update_global_status(status: String, amount: int) -> void:
 	match status:

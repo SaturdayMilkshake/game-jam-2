@@ -64,6 +64,7 @@ text = "Play Again?"
 
 [node name="BackToTitle" type="Button" parent="."]
 z_index = 3
+layout_mode = 0
 offset_left = 392.0
 offset_top = 328.0
 offset_right = 568.0

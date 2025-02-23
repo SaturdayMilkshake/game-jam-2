@@ -69,7 +69,9 @@ func new_turn() -> void:
 	#attributes
 	if economy.economy <= 0:
 		SignalHandler.emit_signal("no_economy")
-	if stability.stability <= 0:
+	if economy.economy >= 10:
+		SignalHandler.emit_signal("excess_economy")
+	if stability.stability <= 3:
 		SignalHandler.emit_signal("no_stability")
 	if military.military <= 2:
 		SignalHandler.emit_signal("no_military")

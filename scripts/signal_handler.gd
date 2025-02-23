@@ -46,6 +46,7 @@ signal update_global_status(status: String, amount: int)
 
 #country attribute statuses
 signal no_economy
+signal excess_economy
 signal no_stability
 signal no_military
 signal no_cooperation
