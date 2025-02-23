@@ -1,9 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8a1x8bhu5ikd"]
+[gd_scene load_steps=6 format=3 uid="uid://c8a1x8bhu5ikd"]
 
 [ext_resource type="Script" path="res://scenes/credits/credits.gd" id="1_ejn25"]
 [ext_resource type="PackedScene" uid="uid://cwxcuy4jjbd7d" path="res://scenes/transition/transition.tscn" id="2_8dgji"]
+[ext_resource type="Texture2D" uid="uid://cv57qesw07e7g" path="res://assets/map.svg" id="2_477rs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjha5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjyye"]
+bg_color = Color(0.333333, 0.333333, 0.333333, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.894118, 0.811765, 0, 1)
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_ejn25")
@@ -17,10 +26,26 @@ offset_right = 768.0
 offset_bottom = 408.0
 metadata/_edit_group_ = true
 
+[node name="ColorRect" type="ColorRect" parent="CreditsContainer"]
+offset_left = -384.0
+offset_top = -120.0
+offset_right = 768.0
+offset_bottom = 528.0
+color = Color(0.356863, 0.996078, 0.894118, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CreditsContainer"]
+modulate = Color(1, 1, 1, 0.372549)
+offset_left = -384.0
+offset_top = -120.0
+offset_right = 768.0
+offset_bottom = 528.0
+texture = ExtResource("2_477rs")
+
 [node name="Programming" type="Label" parent="CreditsContainer"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Programming"
 horizontal_alignment = 1
@@ -32,6 +57,7 @@ offset_left = 24.0
 offset_top = 40.0
 offset_right = 191.0
 offset_bottom = 66.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 text = "SaturdayMilkshake"
 horizontal_alignment = 1
@@ -42,6 +68,7 @@ layout_mode = 0
 offset_top = 64.0
 offset_right = 40.0
 offset_bottom = 98.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Art"
 
@@ -51,14 +78,16 @@ offset_left = 24.0
 offset_top = 40.0
 offset_right = 100.0
 offset_bottom = 66.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
-text = "Oxidized"
+text = "9kajin"
 
 [node name="Music" type="Label" parent="CreditsContainer"]
 layout_mode = 0
 offset_top = 128.0
 offset_right = 68.0
 offset_bottom = 162.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Music"
 
@@ -68,14 +97,16 @@ offset_left = 24.0
 offset_top = 40.0
 offset_right = 100.0
 offset_bottom = 66.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
-text = "Oxidized"
+text = "9kajin"
 
 [node name="SoundEffects" type="Label" parent="CreditsContainer"]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 157.0
 offset_bottom = 226.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Sound Effects"
 
@@ -85,14 +116,16 @@ offset_left = 24.0
 offset_top = 40.0
 offset_right = 100.0
 offset_bottom = 66.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
-text = "Oxidized"
+text = "9kajin"
 
 [node name="Godot" type="Label" parent="CreditsContainer"]
 layout_mode = 0
 offset_top = 256.0
 offset_right = 350.0
 offset_bottom = 290.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Created with Godot Engine 4.3"
 horizontal_alignment = 1
@@ -104,8 +137,10 @@ offset_top = 448.0
 offset_right = 896.0
 offset_bottom = 488.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wjha5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wjyye")
 text = "Back To Title"
 
 [node name="Transition" parent="." instance=ExtResource("2_8dgji")]
+visible = false
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]
