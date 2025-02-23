@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bnpyv8bg55guf"]
 
-[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_dki24"]
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_a46yl"]
 [ext_resource type="PackedScene" uid="uid://da367dath0qla" path="res://scenes/game_manager/game_manager.tscn" id="2_v7uix"]
 [ext_resource type="PackedScene" uid="uid://bs357xfrieidy" path="res://scenes/world/ui/country_info/country_info.tscn" id="3_ea1kg"]
 [ext_resource type="PackedScene" uid="uid://wa8c6q8bsggs" path="res://scenes/world/ui/event_info/event_info.tscn" id="4_v4l2u"]
@@ -50,9 +50,10 @@ shader = ExtResource("12_terjr")
 shader_parameter/pulsing_active = false
 
 [node name="Tutorial" type="Node2D"]
-script = ExtResource("1_dki24")
+script = ExtResource("1_a46yl")
 
 [node name="GameManager" parent="." instance=ExtResource("2_v7uix")]
+in_tutorial = true
 
 [node name="Navbar" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -73,6 +74,7 @@ color = Color(0.229593, 0.229593, 0.229593, 1)
 
 [node name="CountryInfo" parent="LeftPanel" instance=ExtResource("3_ea1kg")]
 visible = false
+in_tutorial = true
 
 [node name="EventInfo" parent="LeftPanel" instance=ExtResource("4_v4l2u")]
 
@@ -111,7 +113,7 @@ offset_left = 8.0
 offset_top = 10.0
 offset_right = 240.0
 offset_bottom = 52.0
-text = "Press to Begin"
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -293,6 +295,7 @@ offset_right = 448.0
 offset_bottom = 128.0
 
 [node name="Transition" parent="." instance=ExtResource("14_5625m")]
+visible = false
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]
 

@@ -61,3 +61,6 @@ signal transition_requested(fade_in: bool, target: String)
 
 #events
 signal request_specific_event(event_id: int)
+
+#tutorial
+signal display_notice_info

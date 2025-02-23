@@ -3,6 +3,8 @@ extends Control
 var add_attribute_mode: bool = true
 var game_active: bool = true
 
+@export var in_tutorial: bool = false
+
 func _ready() -> void:
 	SignalHandler.connect("country_selected", Callable(self, "country_selected"))
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
@@ -13,6 +15,8 @@ func _ready() -> void:
 
 func country_selected(country: String, flag: String, population: int, economy: int, stability: int, military: int, cooperation: int, statuses: String) -> void:
 	if game_active:
+		if in_tutorial:
+			$OpenEvents.text = "Back to Tutorial"
 		self.visible = true
 		$CountryName.text = country
 		$Flag.texture = load(flag)
@@ -95,8 +99,12 @@ func set_country_statuses(status: String) -> void:
 		$StatusesList.text = status
 
 func _on_open_events_pressed() -> void:
-	SignalHandler.emit_signal("set_event_info_visibility", true)
-	self.visible = false
+	if in_tutorial:
+		SignalHandler.emit_signal("display_notice_info")
+		self.visible = false
+	else:
+		SignalHandler.emit_signal("set_event_info_visibility", true)
+		self.visible = false
 
 func new_turn() -> void:
 	self.visible = false
