@@ -1,56 +1,91 @@
-[gd_scene load_steps=4 format=3 uid="uid://bepvexre67rlj"]
+[gd_scene load_steps=8 format=3 uid="uid://bepvexre67rlj"]
 
 [ext_resource type="Script" path="res://scenes/title_screen/title_screen.gd" id="1_ve2lx"]
 [ext_resource type="PackedScene" uid="uid://cwxcuy4jjbd7d" path="res://scenes/transition/transition.tscn" id="2_70o7c"]
+[ext_resource type="Texture2D" uid="uid://cv57qesw07e7g" path="res://assets/map.svg" id="2_b37h0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5imww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiyxc"]
+bg_color = Color(0.332881, 0.332881, 0.332881, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.893123, 0.81173, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwc6e"]
+bg_color = Color(0.333333, 0.333333, 0.333333, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.895279, 0.810784, 1.54018e-06, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwgnh"]
+bg_color = Color(0.333333, 0.333333, 0.333333, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.894118, 0.811765, 0, 1)
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_ve2lx")
 
-[node name="GameTitle" type="Label" parent="."]
-offset_top = 32.0
+[node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
-offset_bottom = 99.0
-theme_override_font_sizes/font_size = 48
+offset_bottom = 648.0
+color = Color(0.356887, 0.995782, 0.894582, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.372549)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_b37h0")
+
+[node name="GameTitle" type="Label" parent="."]
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 53
 text = "Game Jam 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Play" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 128.0
-offset_right = 640.0
-offset_bottom = 192.0
+offset_left = 488.0
+offset_top = 168.0
+offset_right = 664.0
+offset_bottom = 232.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5imww")
+theme_override_styles/normal = SubResource("StyleBoxFlat_oiyxc")
 text = "Play"
 
 [node name="Tutorial" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 192.0
-offset_right = 640.0
-offset_bottom = 256.0
+offset_left = 488.0
+offset_top = 240.0
+offset_right = 664.0
+offset_bottom = 304.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5imww")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dwc6e")
 text = "Tutorial"
 
 [node name="Credits" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 256.0
-offset_right = 640.0
-offset_bottom = 320.0
+offset_left = 488.0
+offset_top = 312.0
+offset_right = 664.0
+offset_bottom = 376.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5imww")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vwgnh")
 text = "Credits
 "
 
 [node name="Transition" parent="." instance=ExtResource("2_70o7c")]
 visible = false
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
