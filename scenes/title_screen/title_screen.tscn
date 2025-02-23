@@ -46,6 +46,11 @@ text = "Credits
 "
 
 [node name="Transition" parent="." instance=ExtResource("2_70o7c")]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
