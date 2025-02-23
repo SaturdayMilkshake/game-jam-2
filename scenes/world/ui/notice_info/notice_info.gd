@@ -38,7 +38,8 @@ var tutorial_text: Array = [
 	"War Progress cannot be reduced. Play wisely!",
 	"Lastly, cooperation. Cooperation is the most important attribute to monitor when you are aiming for peace.",
 	"If a country's cooperation is at 10 at the start of a new year, it will contribute to Peace Progress.",
-	"In order to beat the game, you must reach 100% in Peace Progress. Good luck!", #34
+	"However, when its cooperation reaches 0, it can no longer be modified again and the country's attributes will no longer be affected by influence.",
+	"In order to beat the game, you must reach 100% in Peace Progress. Good luck!", #35
 ]
 
 var current_tutorial_position: int = 0
@@ -58,8 +59,12 @@ func _on_next_event_pressed() -> void:
 	match current_tutorial_position:
 		7:
 			pass
+		35:
+			tutorial_finished = true
+			$Click.play()
 		_:
 			next_text()
+			$Click.play()
 	if tutorial_finished:
 		SignalHandler.emit_signal("transition_requested", true, "res://scenes/title_screen/title_screen.tscn")
 
@@ -78,10 +83,9 @@ func next_text() -> void:
 				SignalHandler.emit_signal("new_event_requested")
 				self.visible = false
 				$NextEvent.visible = false
-			34:
+			35:
 				$NextEvent.text = "Finish Tutorial"
 				$NextEvent.visible = true
-				tutorial_finished = true
 
 func country_selected(_country: String, _flag: String, _population: int, _economy: int, _stability: int, _military: int, _cooperation: int, _statuses: String) -> void:
 	self.visible = false

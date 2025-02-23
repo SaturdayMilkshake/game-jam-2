@@ -108,6 +108,7 @@ func _on_open_events_pressed() -> void:
 	else:
 		SignalHandler.emit_signal("set_event_info_visibility", true)
 		self.visible = false
+	$Click.play()
 
 func new_turn() -> void:
 	self.visible = false
@@ -116,11 +117,13 @@ func _on_add_attribute_pressed() -> void:
 	$InfluenceAttribute/AddAttribute.disabled = true
 	$InfluenceAttribute/SubtractAttribute.disabled = false
 	add_attribute_mode = true
+	$Click.play()
 
 func _on_subtract_attribute_pressed() -> void:
 	$InfluenceAttribute/AddAttribute.disabled = false
 	$InfluenceAttribute/SubtractAttribute.disabled = true
 	add_attribute_mode = false
+	$Click.play()
 
 func _on_economy_pressed() -> void:
 	if in_tutorial:

@@ -154,6 +154,7 @@ func _on_map_pressed() -> void:
 	check_statuses()
 	pulse_country(true)
 	SignalHandler.emit_signal("country_selected", country_name, flag, population, economy.economy, stability.stability, military.military, cooperation.cooperation, status_text)
+	$Click.play()
 
 func _on_map_mouse_entered() -> void:
 	self.modulate = Color(1.0, 1.0, 1.0, 0.5)

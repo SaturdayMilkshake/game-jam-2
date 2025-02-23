@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdycehgp78nr0"]
+[gd_scene load_steps=10 format=3 uid="uid://cdycehgp78nr0"]
 
 [ext_resource type="PackedScene" uid="uid://bfbgcmcj60ckw" path="res://scenes/components/economy/economy.tscn" id="1_cjqcq"]
 [ext_resource type="Script" path="res://scenes/country/country.gd" id="1_e8aaw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvfdoie2gtv8b" path="res://scenes/components/military/military.tscn" id="3_jvxxf"]
 [ext_resource type="PackedScene" uid="uid://bqpgu6a8kjg50" path="res://scenes/components/cooperation/cooperation.tscn" id="5_hfe5j"]
 [ext_resource type="Shader" path="res://scenes/country/country_map.gdshader" id="6_3d7ie"]
+[ext_resource type="AudioStream" uid="uid://5f800qeqnano" path="res://assets/audio/click.ogg" id="7_408jd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pyoy8"]
 resource_local_to_scene = true
@@ -54,6 +55,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_c7vw4")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_408jd")
+volume_db = 10.0
 
 [connection signal="mouse_entered" from="Map" to="." method="_on_map_mouse_entered"]
 [connection signal="mouse_exited" from="Map" to="." method="_on_map_mouse_exited"]

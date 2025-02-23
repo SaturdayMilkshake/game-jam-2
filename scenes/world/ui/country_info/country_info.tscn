@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs357xfrieidy"]
+[gd_scene load_steps=11 format=3 uid="uid://bs357xfrieidy"]
 
 [ext_resource type="Script" path="res://scenes/world/ui/country_info/country_info.gd" id="1_rn7no"]
 [ext_resource type="Texture2D" uid="uid://ccx85m0m64euw" path="res://assets/flags/satura.svg" id="2_pgu2d"]
+[ext_resource type="AudioStream" uid="uid://5f800qeqnano" path="res://assets/audio/click.ogg" id="3_g026d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mytyi"]
 
@@ -153,6 +154,10 @@ offset_right = 312.0
 offset_bottom = 27.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_umjqx")
 text = "-"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g026d")
+volume_db = 10.0
 
 [connection signal="pressed" from="Economy" to="." method="_on_economy_pressed"]
 [connection signal="pressed" from="Stability" to="." method="_on_stability_pressed"]

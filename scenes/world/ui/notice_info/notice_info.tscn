@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca7gygaworqno"]
+[gd_scene load_steps=4 format=3 uid="uid://ca7gygaworqno"]
 
 [ext_resource type="Script" path="res://scenes/world/ui/notice_info/notice_info.gd" id="1_1pe52"]
+[ext_resource type="AudioStream" uid="uid://5f800qeqnano" path="res://assets/audio/click.ogg" id="2_o6o7p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ivfs"]
 
@@ -43,5 +44,9 @@ focus_mode = 1
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1ivfs")
 text = "Next"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o6o7p")
+volume_db = 10.0
 
 [connection signal="pressed" from="NextEvent" to="." method="_on_next_event_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8a1x8bhu5ikd"]
+[gd_scene load_steps=7 format=3 uid="uid://c8a1x8bhu5ikd"]
 
 [ext_resource type="Script" path="res://scenes/credits/credits.gd" id="1_ejn25"]
 [ext_resource type="PackedScene" uid="uid://cwxcuy4jjbd7d" path="res://scenes/transition/transition.tscn" id="2_8dgji"]
 [ext_resource type="Texture2D" uid="uid://cv57qesw07e7g" path="res://assets/map.svg" id="2_477rs"]
+[ext_resource type="AudioStream" uid="uid://5f800qeqnano" path="res://assets/audio/click.ogg" id="4_78n4w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjha5"]
 
@@ -120,7 +121,7 @@ offset_right = 100.0
 offset_bottom = 66.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
-text = "9kajin"
+text = "SaturdayMilkshake, 9kajin"
 
 [node name="Godot" type="Label" parent="CreditsContainer"]
 layout_mode = 0
@@ -143,5 +144,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wjyye")
 text = "Back To Title"
 
 [node name="Transition" parent="." instance=ExtResource("2_8dgji")]
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_78n4w")
+volume_db = 10.0
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]

@@ -297,7 +297,6 @@ offset_right = 448.0
 offset_bottom = 128.0
 
 [node name="Transition" parent="." instance=ExtResource("14_5625m")]
-visible = false
 
 [connection signal="pressed" from="BackToTitle" to="." method="_on_back_to_title_pressed"]
 
