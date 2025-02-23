@@ -19,6 +19,8 @@ var peace_progress: int = 0
 var war_progress_active: bool = false
 var war_progress: int = 0
 
+@export var in_tutorial: bool = false
+
 func _ready() -> void:
 	SignalHandler.connect("new_turn", Callable(self, "new_turn"))
 	SignalHandler.connect("influence_used", Callable(self, "influence_used"))
@@ -30,7 +32,8 @@ func _ready() -> void:
 	SignalHandler.connect("excess_military", Callable(self, "excess_military"))
 	SignalHandler.connect("no_cooperation", Callable(self, "no_cooperation"))
 	SignalHandler.connect("excess_cooperation", Callable(self, "excess_cooperation"))
-	call_deferred("start_game")
+	if !in_tutorial:
+		call_deferred("start_game")
 
 func start_game() -> void:
 	SignalHandler.emit_signal("game_started")

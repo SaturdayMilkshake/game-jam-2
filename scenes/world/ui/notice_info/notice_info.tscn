@@ -22,7 +22,7 @@ offset_top = 16.0
 offset_right = 256.0
 offset_bottom = 66.0
 theme_override_font_sizes/font_size = 36
-text = "Notice"
+text = "Tutorial"
 vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="."]
@@ -32,7 +32,6 @@ offset_top = 72.0
 offset_right = 368.0
 offset_bottom = 376.0
 bbcode_enabled = true
-text = "Test notice for testing purposes."
 
 [node name="NextEvent" type="Button" parent="."]
 layout_mode = 0
@@ -43,4 +42,6 @@ offset_bottom = 504.0
 focus_mode = 1
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1ivfs")
-text = "Next Event"
+text = "Next"
+
+[connection signal="pressed" from="NextEvent" to="." method="_on_next_event_pressed"]

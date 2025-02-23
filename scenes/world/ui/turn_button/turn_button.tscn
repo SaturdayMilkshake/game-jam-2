@@ -21,7 +21,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_liip5")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hlqfq")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_h4po6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_xl1gf")
-text = "Turn 1"
+text = "Year 1940
+"
 alignment = 0
 script = ExtResource("1_ed0ck")
 metadata/_edit_use_anchors_ = true
