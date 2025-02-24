@@ -5,8 +5,8 @@ extends Control
 var tutorial_finished: bool = false
 
 var tutorial_text: Array = [
-	"Welcome to GAME_NAME!",
-	"This tutorial will walk you through the basics of playing GAME_NAME.",
+	"Welcome to Peacekeeper!",
+	"This tutorial will walk you through the basics of playing Peacekeeper.",
 	"As the newly-appointed Peace Supervisor, your task is to bring peace to the continent.",
 	"You must fill the Peace Progress bar to 100% in order to win.",
 	"Otherwise, if the War Progress bar reaches 100%, the continent will plunge into war and you will lose.",

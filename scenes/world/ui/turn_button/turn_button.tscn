@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dca8skq7b8w1m"]
+[gd_scene load_steps=7 format=3 uid="uid://dca8skq7b8w1m"]
 
 [ext_resource type="Script" path="res://scenes/world/ui/turn_button/turn_button.gd" id="1_ed0ck"]
+[ext_resource type="AudioStream" uid="uid://5f800qeqnano" path="res://assets/audio/click.ogg" id="2_2lk7q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_liip5"]
 
@@ -26,5 +27,9 @@ text = "Year 1940
 alignment = 0
 script = ExtResource("1_ed0ck")
 metadata/_edit_use_anchors_ = true
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2lk7q")
+volume_db = 10.0
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

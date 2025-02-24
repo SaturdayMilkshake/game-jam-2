@@ -13,7 +13,7 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.894118, 0.811765, 0, 1)
+border_color = Color(0.160784, 0.607843, 0.788235, 1)
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_ejn25")
@@ -24,8 +24,7 @@ anchors_preset = 0
 offset_left = 384.0
 offset_top = 120.0
 offset_right = 768.0
-offset_bottom = 408.0
-metadata/_edit_group_ = true
+offset_bottom = 416.0
 
 [node name="ColorRect" type="ColorRect" parent="CreditsContainer"]
 layout_mode = 0
@@ -86,6 +85,7 @@ theme_override_font_sizes/font_size = 18
 text = "9kajin"
 
 [node name="Music" type="Label" parent="CreditsContainer"]
+visible = false
 layout_mode = 0
 offset_top = 128.0
 offset_right = 68.0
@@ -106,9 +106,9 @@ text = "9kajin"
 
 [node name="SoundEffects" type="Label" parent="CreditsContainer"]
 layout_mode = 0
-offset_top = 192.0
+offset_top = 136.0
 offset_right = 157.0
-offset_bottom = 226.0
+offset_bottom = 170.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Sound Effects"

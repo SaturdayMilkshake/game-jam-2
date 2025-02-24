@@ -16,6 +16,7 @@ func _on_pressed() -> void:
 	else:
 		self.disabled = true
 	SignalHandler.emit_signal("new_turn")
+	$Click.play()
 
 func turn_updated(turn: int) -> void:
 	self.text = "Year " + str(turn + 1940)

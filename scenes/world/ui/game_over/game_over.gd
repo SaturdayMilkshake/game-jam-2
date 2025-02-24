@@ -28,6 +28,8 @@ func game_over(reason: String) -> void:
 
 func _on_play_again_pressed() -> void:
 	SignalHandler.emit_signal("transition_requested", true, "res://scenes/world/world.tscn")
+	$Click.play()
 
 func _on_back_to_title_pressed() -> void:
 	SignalHandler.emit_signal("transition_requested", true, "res://scenes/title_screen/title_screen.tscn")
+	$Click.play()

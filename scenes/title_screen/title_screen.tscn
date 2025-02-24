@@ -13,7 +13,7 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.893123, 0.81173, 0, 1)
+border_color = Color(0.160784, 0.607843, 0.788235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwc6e"]
 bg_color = Color(0.333333, 0.333333, 0.333333, 1)
@@ -21,7 +21,7 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.895279, 0.810784, 1.54018e-06, 1)
+border_color = Color(0.160784, 0.607843, 0.788235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwgnh"]
 bg_color = Color(0.333333, 0.333333, 0.333333, 1)
@@ -29,7 +29,7 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.894118, 0.811765, 0, 1)
+border_color = Color(0.160784, 0.607843, 0.788235, 1)
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_ve2lx")
@@ -51,15 +51,22 @@ offset_right = 1152.0
 offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 53
-text = "Game Jam 2"
+text = "Peacekeeper"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label" type="Label" parent="GameTitle"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 88.0
+offset_right = 744.0
+offset_bottom = 120.0
+
 [node name="Play" type="Button" parent="."]
 offset_left = 488.0
-offset_top = 168.0
+offset_top = 200.0
 offset_right = 664.0
-offset_bottom = 232.0
+offset_bottom = 264.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5imww")
 theme_override_styles/normal = SubResource("StyleBoxFlat_oiyxc")
@@ -67,9 +74,9 @@ text = "Play"
 
 [node name="Tutorial" type="Button" parent="."]
 offset_left = 488.0
-offset_top = 240.0
+offset_top = 272.0
 offset_right = 664.0
-offset_bottom = 304.0
+offset_bottom = 336.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5imww")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dwc6e")
@@ -77,9 +84,9 @@ text = "Tutorial"
 
 [node name="Credits" type="Button" parent="."]
 offset_left = 488.0
-offset_top = 312.0
+offset_top = 344.0
 offset_right = 664.0
-offset_bottom = 376.0
+offset_bottom = 408.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5imww")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vwgnh")

@@ -8,4 +8,7 @@ offset_bottom = 48.0
 text = "M"
 script = ExtResource("1_vrnqu")
 
+[node name="Click" type="AudioStreamPlayer" parent="."]
+volume_db = 10.0
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]

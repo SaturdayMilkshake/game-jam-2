@@ -19,7 +19,7 @@ func transition_requested(fade_in: bool, new_target: String) -> void:
 		tween.tween_callback(set_visibility)
 
 func change_to_scene() -> void:
-	if FileAccess.file_exists(target):
+	if ResourceLoader.exists(target):
 		get_tree().change_scene_to_file(target)
 
 func set_visibility(status: bool = false) -> void:
